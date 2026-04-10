@@ -8,15 +8,16 @@
 @import url('https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@300;400;500;600;700;900&display=swap');
 
 :root {
-  --primary: #1a1a1a;
-  --accent: #e74c3c;
-  --accent-light: #fdf5f5;
+  --primary: #0f172a;
+  --accent: #2563eb;
+  --accent-dark: #1e40af;
+  --accent-light: #eff6ff;
+  --accent-mid: #dbeafe;
   --bg: #ffffff;
-  --sidebar-bg: #fafafa;
-  --border: #e5e5e5;
-  --code-bg: #f6f6f6;
-  --table-header: #1a1a1a;
-  --highlight: #fff3cd;
+  --sidebar-bg: #f8fafc;
+  --border: #e2e8f0;
+  --code-bg: #f1f5f9;
+  --table-header: #1e3a5f;
   --sidebar-width: 300px;
 }
 
@@ -28,6 +29,27 @@ body {
   line-height: 1.8;
   color: var(--primary);
   background: var(--bg);
+}
+
+/* ===== WATERMARK ===== */
+#content::before {
+  content: '김탄생  TANSAENG  김탄생  TANSAENG  김탄생  TANSAENG  김탄생  TANSAENG  김탄생  TANSAENG  김탄생  TANSAENG  김탄생  TANSAENG  김탄생  TANSAENG  김탄생  TANSAENG  김탄생  TANSAENG  김탄생  TANSAENG  김탄생  TANSAENG  김탄생  TANSAENG  김탄생  TANSAENG  김탄생  TANSAENG  김탄생  TANSAENG  김탄생  TANSAENG  김탄생  TANSAENG  김탄생  TANSAENG  김탄생  TANSAENG';
+  position: fixed;
+  top: -50%;
+  left: -50%;
+  width: 200%;
+  height: 200%;
+  font-size: 28px;
+  font-weight: 900;
+  color: rgba(37, 99, 235, 0.025);
+  transform: rotate(-35deg);
+  white-space: nowrap;
+  word-spacing: 80px;
+  line-height: 120px;
+  letter-spacing: 10px;
+  pointer-events: none;
+  z-index: 0;
+  user-select: none;
 }
 
 /* ===== SIDEBAR ===== */
@@ -46,23 +68,30 @@ body {
 }
 
 #sidebar-header {
-  padding: 20px 16px 12px;
-  border-bottom: 1px solid var(--border);
+  padding: 20px 16px 14px;
+  background: linear-gradient(135deg, #1e40af, #2563eb);
   flex-shrink: 0;
 }
 
 #sidebar-header h2 {
-  font-size: 14px;
+  font-size: 13px;
   font-weight: 700;
-  color: var(--primary);
-  margin-bottom: 12px;
+  color: #fff;
   letter-spacing: -0.3px;
+}
+
+#sidebar-header .brand {
+  font-size: 11px;
+  color: rgba(255,255,255,0.7);
+  margin-top: 4px;
+  font-weight: 400;
 }
 
 /* ===== SEARCH ===== */
 #search-container {
-  padding: 0 16px 12px;
+  padding: 12px 16px;
   flex-shrink: 0;
+  border-bottom: 1px solid var(--border);
 }
 
 #search-input {
@@ -79,13 +108,14 @@ body {
 
 #search-input:focus {
   border-color: var(--accent);
-  box-shadow: 0 0 0 3px rgba(231,76,60,0.1);
+  box-shadow: 0 0 0 3px rgba(37,99,235,0.12);
 }
 
 #search-results {
   padding: 0 16px 8px;
   font-size: 12px;
-  color: #888;
+  color: var(--accent);
+  font-weight: 500;
   flex-shrink: 0;
   display: none;
 }
@@ -102,17 +132,14 @@ body {
   padding: 8px 16px 8px 20px;
   font-size: 13px;
   font-weight: 600;
-  color: #333;
+  color: #334155;
   text-decoration: none;
   border-left: 3px solid transparent;
   transition: all 0.15s;
   cursor: pointer;
 }
 
-.toc-chapter:hover {
-  background: #f0f0f0;
-  color: var(--accent);
-}
+.toc-chapter:hover { background: var(--accent-light); color: var(--accent); }
 
 .toc-chapter.active {
   border-left-color: var(--accent);
@@ -126,18 +153,15 @@ body {
   padding: 4px 16px 4px 36px;
   font-size: 12px;
   font-weight: 400;
-  color: #666;
+  color: #64748b;
   text-decoration: none;
   transition: all 0.15s;
   cursor: pointer;
 }
 
-.toc-section:hover {
-  color: var(--accent);
-  background: #f5f5f5;
-}
+.toc-section:hover { color: var(--accent); background: #f1f5f9; }
 
-/* ===== INDEX PANEL ===== */
+/* ===== INDEX ===== */
 #index-panel {
   border-top: 1px solid var(--border);
   padding: 12px 16px;
@@ -145,54 +169,48 @@ body {
 }
 
 #index-panel h3 {
-  font-size: 12px;
+  font-size: 11px;
   font-weight: 700;
-  color: #666;
+  color: var(--accent-dark);
   margin-bottom: 8px;
   text-transform: uppercase;
   letter-spacing: 1px;
 }
 
-.index-tags {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 4px;
-}
+.index-tags { display: flex; flex-wrap: wrap; gap: 4px; }
 
 .index-tag {
   display: inline-block;
   padding: 3px 8px;
   font-size: 11px;
-  background: #eee;
+  background: var(--accent-light);
   border-radius: 4px;
-  color: #555;
+  color: var(--accent-dark);
   cursor: pointer;
   transition: all 0.15s;
   text-decoration: none;
-  border: 1px solid transparent;
+  border: 1px solid var(--accent-mid);
 }
 
-.index-tag:hover {
-  background: var(--accent);
-  color: #fff;
-  border-color: var(--accent);
-}
+.index-tag:hover { background: var(--accent); color: #fff; border-color: var(--accent); }
 
-/* ===== MAIN CONTENT ===== */
+/* ===== MAIN ===== */
 #content {
   margin-left: var(--sidebar-width);
   padding: 40px 60px 80px;
   max-width: 900px;
+  position: relative;
+  z-index: 1;
 }
 
-/* ===== MOBILE TOGGLE ===== */
+/* ===== MOBILE ===== */
 #sidebar-toggle {
   display: none;
   position: fixed;
   top: 12px; left: 12px;
   z-index: 200;
   width: 40px; height: 40px;
-  background: var(--primary);
+  background: var(--accent);
   color: #fff;
   border: none;
   border-radius: 8px;
@@ -205,30 +223,74 @@ body {
 /* ===== COVER ===== */
 .cover {
   text-align: center;
-  padding: 80px 0 60px;
-  border-bottom: 3px solid var(--primary);
+  padding: 60px 30px;
   margin-bottom: 50px;
+  background: linear-gradient(135deg, #1e3a5f 0%, #1e40af 50%, #2563eb 100%);
+  border-radius: 16px;
+  position: relative;
+  overflow: hidden;
+}
+
+.cover::before {
+  content: 'TANSAENG';
+  position: absolute;
+  bottom: -20px;
+  right: -10px;
+  font-size: 120px;
+  font-weight: 900;
+  color: rgba(255,255,255,0.05);
+  letter-spacing: 8px;
+  pointer-events: none;
+}
+
+.cover::after {
+  content: '';
+  position: absolute;
+  top: 0; left: 0; right: 0; bottom: 0;
+  background: url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%23ffffff' fill-opacity='0.03'%3E%3Cpath d='M36 34v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0-30V0h-2v4h-4v2h4v4h2V6h4V4h-4zM6 34v-4H4v4H0v2h4v4h2v-4h4v-2H6zM6 4V0H4v4H0v2h4v4h2V6h4V4H6z'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E");
+  pointer-events: none;
 }
 
 .cover h1 {
-  font-size: 32px;
+  font-size: 30px;
   font-weight: 900;
-  color: var(--primary);
+  color: #fff;
   letter-spacing: -1px;
-  margin-bottom: 12px;
+  margin-bottom: 10px;
+  position: relative;
+  z-index: 1;
 }
 
 .cover .subtitle {
-  font-size: 15px;
-  color: #666;
+  font-size: 14px;
+  color: rgba(255,255,255,0.8);
   font-weight: 400;
   line-height: 1.7;
+  position: relative;
+  z-index: 1;
+}
+
+.cover .badge {
+  display: inline-block;
+  margin-top: 20px;
+  padding: 6px 20px;
+  background: rgba(255,255,255,0.15);
+  border: 1px solid rgba(255,255,255,0.25);
+  border-radius: 20px;
+  font-size: 12px;
+  color: rgba(255,255,255,0.9);
+  font-weight: 500;
+  position: relative;
+  z-index: 1;
+  backdrop-filter: blur(4px);
 }
 
 .cover .meta {
-  margin-top: 30px;
-  font-size: 13px;
-  color: #999;
+  margin-top: 16px;
+  font-size: 11px;
+  color: rgba(255,255,255,0.5);
+  position: relative;
+  z-index: 1;
 }
 
 /* ===== CHAPTER ===== */
@@ -239,11 +301,11 @@ body {
 }
 
 .chapter-title {
-  font-size: 24px;
+  font-size: 22px;
   font-weight: 700;
-  color: var(--primary);
+  color: var(--accent-dark);
   padding-bottom: 10px;
-  border-bottom: 3px solid var(--primary);
+  border-bottom: 3px solid var(--accent);
   margin-bottom: 24px;
   letter-spacing: -0.5px;
 }
@@ -256,23 +318,22 @@ body {
 .section-title {
   font-size: 16px;
   font-weight: 700;
-  color: #222;
+  color: #1e293b;
   margin-bottom: 12px;
   padding-bottom: 6px;
   border-bottom: 1px solid var(--border);
+  padding-left: 12px;
+  border-left: 3px solid var(--accent);
 }
 
 h4 {
   font-size: 14px;
   font-weight: 600;
-  color: #333;
+  color: var(--accent-dark);
   margin: 18px 0 8px;
 }
 
-p {
-  margin: 8px 0;
-  word-break: keep-all;
-}
+p { margin: 8px 0; word-break: keep-all; }
 
 /* ===== TABLE ===== */
 table {
@@ -290,7 +351,7 @@ th {
   font-weight: 500;
   color: #fff;
   font-size: 13px;
-  border: 1px solid #333;
+  border: 1px solid #2d4a6f;
 }
 
 td {
@@ -299,14 +360,14 @@ td {
   vertical-align: top;
 }
 
-tbody tr:nth-child(even) { background: #f9f9f9; }
-tbody tr:hover { background: #f3f3f3; }
+tbody tr:nth-child(even) { background: #f8fafc; }
+tbody tr:hover { background: var(--accent-light); }
 
-/* ===== CODE BLOCK ===== */
+/* ===== CODE ===== */
 pre {
   background: var(--code-bg);
   border: 1px solid var(--border);
-  border-left: 4px solid #333;
+  border-left: 4px solid var(--accent);
   padding: 16px 18px;
   margin: 12px 0 16px;
   font-family: 'D2Coding', 'Consolas', 'Courier New', monospace;
@@ -324,14 +385,10 @@ code {
   padding: 2px 6px;
   border-radius: 3px;
   font-size: 13px;
-  color: #c0392b;
+  color: var(--accent-dark);
 }
 
-pre code {
-  background: none;
-  padding: 0;
-  color: inherit;
-}
+pre code { background: none; padding: 0; color: inherit; }
 
 /* ===== BLOCKQUOTE ===== */
 blockquote {
@@ -343,26 +400,15 @@ blockquote {
 }
 
 blockquote p { margin: 4px 0; }
-blockquote strong { color: var(--accent); }
+blockquote strong { color: var(--accent-dark); }
 
-/* ===== LISTS ===== */
-ul, ol {
-  padding-left: 24px;
-  margin: 8px 0;
-}
-
+ul, ol { padding-left: 24px; margin: 8px 0; }
 li { margin: 4px 0; }
 
-/* ===== HR ===== */
-hr {
-  border: none;
-  border-top: 1px solid var(--border);
-  margin: 30px 0;
-}
+hr { border: none; border-top: 1px solid var(--border); margin: 30px 0; }
 
-/* ===== HIGHLIGHT ===== */
 mark.search-highlight {
-  background: #ffe066;
+  background: #fbbf24;
   padding: 1px 2px;
   border-radius: 2px;
   color: inherit;
@@ -371,14 +417,11 @@ mark.search-highlight {
 .section.search-hidden { display: none; }
 .chapter.search-hidden { display: none; }
 
-/* ===== BACK TO TOP ===== */
 #back-to-top {
   position: fixed;
-  bottom: 30px;
-  right: 30px;
-  width: 44px;
-  height: 44px;
-  background: var(--primary);
+  bottom: 30px; right: 30px;
+  width: 44px; height: 44px;
+  background: var(--accent);
   color: #fff;
   border: none;
   border-radius: 50%;
@@ -390,31 +433,41 @@ mark.search-highlight {
   display: flex;
   align-items: center;
   justify-content: center;
-  box-shadow: 0 2px 8px rgba(0,0,0,0.2);
+  box-shadow: 0 2px 12px rgba(37,99,235,0.3);
 }
 
 #back-to-top.visible { opacity: 1; }
 
-/* ===== PRINT ===== */
-@media print {
-  #sidebar { display: none; }
-  #sidebar-toggle { display: none; }
-  #back-to-top { display: none; }
-  #content { margin-left: 0; padding: 20px; max-width: 100%; }
-  .chapter { page-break-before: always; }
-  .chapter:first-of-type { page-break-before: avoid; }
-  table { page-break-inside: avoid; }
-  pre { page-break-inside: avoid; }
+/* ===== FOOTER BRAND ===== */
+.footer-brand {
+  text-align: center;
+  padding: 40px 20px;
+  margin-top: 40px;
+  border-top: 2px solid var(--accent);
+  background: linear-gradient(180deg, var(--accent-light), #fff);
 }
 
-/* ===== MOBILE ===== */
+.footer-brand .logo { font-size: 20px; font-weight: 900; color: var(--accent-dark); letter-spacing: -0.5px; }
+.footer-brand .tagline { font-size: 12px; color: #64748b; margin-top: 4px; }
+.footer-brand .cafe { font-size: 11px; color: #94a3b8; margin-top: 8px; }
+
+@media print {
+  #sidebar, #sidebar-toggle, #back-to-top { display: none; }
+  #content { margin-left: 0; padding: 20px; max-width: 100%; }
+  #content::before { display: none; }
+  .cover { background: #1e40af !important; -webkit-print-color-adjust: exact; }
+  .chapter { page-break-before: always; }
+  .chapter:first-of-type { page-break-before: avoid; }
+  table, pre { page-break-inside: avoid; }
+}
+
 @media (max-width: 768px) {
   #sidebar { transform: translateX(-100%); }
   #sidebar.open { transform: translateX(0); box-shadow: 4px 0 20px rgba(0,0,0,0.15); }
   #sidebar-toggle { display: flex; }
   #content { margin-left: 0; padding: 20px 16px 60px; }
-  .cover h1 { font-size: 24px; }
-  .chapter-title { font-size: 20px; }
+  .cover h1 { font-size: 22px; }
+  .chapter-title { font-size: 18px; }
 }
 </style>
 </head>
@@ -424,7 +477,8 @@ mark.search-highlight {
 
 <nav id="sidebar">
   <div id="sidebar-header">
-    <h2>&#128218; 배대지 완전정복</h2>
+    <h2>&#128218; 배대지 완전정복 가이드</h2>
+    <div class="brand">by 김탄생 | 탄생하는부자들</div>
   </div>
   <div id="search-container">
     <input type="text" id="search-input" placeholder="검색어 입력 (예: 가격취하)" oninput="handleSearch(this.value)">
@@ -439,32 +493,27 @@ mark.search-highlight {
 
 <main id="content">
 
-<!-- ===== COVER ===== -->
 <div class="cover">
   <h1>김탄생의 배대지 완전정복 가이드</h1>
   <p class="subtitle">이 가이드만 읽으면, 배대지 때문에 막히는 일은 없습니다.</p>
-  <p class="meta">김탄생 | 월 2억 매출 · 13개 스토어 · 3개 배대지 운영<br>마지막 업데이트: 2026년 4월</p>
+  <span class="badge">김탄생 | 탄생하는부자들</span>
+  <p class="meta">마지막 업데이트: 2026년 4월</p>
 </div>
 
 <p>구매대행을 시작하면 제일 먼저 부딪히는 벽이 <strong>배대지</strong>입니다.</p>
 <p>"배대지가 뭐야?" "어디 써야 해?" "주문서는 어떻게 작성해?"</p>
-<p>저도 처음엔 똑같았습니다. 타오바오 가입도 안 되어 있던 사람이었으니까요.</p>
-<p>지금은 <strong>월 2억 매출</strong>을 13개 스토어에서 만들고 있고, 하루에도 수십 건의 주문이 배대지를 거쳐 고객에게 도착합니다. 직원 2명과 함께 3개 배대지를 동시에 운영하면서, <strong>수천 건의 실전 경험</strong>에서 쌓인 모든 노하우를 이 가이드에 담았습니다.</p>
-<p><strong>이론이 아닙니다. 전부 실전입니다.</strong></p>
+<p><strong>이 가이드 하나로 배대지의 모든 것을 정리했습니다.</strong></p>
 
 <hr>
 
-<!-- ===== CHAPTER 1 ===== -->
+<!-- ===== CH1 ===== -->
 <div class="chapter" id="ch1" data-keywords="배대지,배송대행지,물류,창고,입고,검수,포장,출고,택배,해운">
 <h2 class="chapter-title">1. 배대지란 무엇인가</h2>
 
 <div class="section" id="s1-1">
 <h3 class="section-title">배대지 = 배송대행지</h3>
-<p>중국에서 상품을 사면, 한국으로 바로 보낼 수 없습니다.</p>
-<p>타오바오 판매자가 한국 주소로 직배송? <strong>안 됩니다.</strong></p>
-<p>여기서 배대지가 등장합니다.</p>
-<p><strong>배대지는 중국에 있는 '중간 물류 창고'입니다.</strong></p>
-<p>판매자가 배대지로 상품을 보내면, 배대지에서 검수하고, 포장하고, 한국까지 배송해줍니다.</p>
+<p>중국에서 상품을 사면, 한국으로 바로 보낼 수 없습니다. 타오바오 판매자가 한국 주소로 직배송? <strong>안 됩니다.</strong></p>
+<p><strong>배대지는 중국에 있는 '중간 물류 창고'입니다.</strong> 판매자가 배대지로 상품을 보내면, 배대지에서 검수하고, 포장하고, 한국까지 배송해줍니다.</p>
 </div>
 
 <div class="section" id="s1-2">
@@ -482,7 +531,7 @@ mark.search-highlight {
 </div>
 
 <div class="section" id="s1-3">
-<h3 class="section-title">전체 배송 흐름 (한눈에 보기)</h3>
+<h3 class="section-title">전체 배송 흐름</h3>
 <pre><code>타오바오/1688 주문
     ↓ 판매자 발송 (2~4일)
 배대지 (중국 산둥성 웨이하이)
@@ -494,30 +543,18 @@ mark.search-highlight {
 소형 → CJ/한진 일반택배
 대형 → 경동택배 화물
     ↓ (1~2일)
-고객 수령</code></pre>
-<blockquote><p><strong>고객 안내용 기준 문구:</strong><br>"해외배송 상품으로, 빨간날 제외하고 <strong>2주에서 2주 반</strong> 정도 소요됩니다."</p></blockquote>
+고객 수령
 
-<table>
-<thead><tr><th>구간</th><th>소요 기간</th></tr></thead>
-<tbody>
-<tr><td>중국 판매자 → 배대지(웨이하이)</td><td>3~4일</td></tr>
-<tr><td>배대지 포장</td><td>1~2일</td></tr>
-<tr><td>배대지 → 한국 (해운)</td><td>3~4일</td></tr>
-<tr><td>통관 (세관 물량에 따라)</td><td>1~7일</td></tr>
-<tr><td>통관 후 → 고객 (국내 택배)</td><td>1~2일</td></tr>
-<tr><td><strong>합계</strong></td><td><strong>약 9~14일 (빨간날 제외)</strong></td></tr>
-</tbody>
-</table>
+총 소요: 약 9~14일 (공휴일 제외)</code></pre>
 </div>
 </div>
 
-<!-- ===== CHAPTER 2 ===== -->
-<div class="chapter" id="ch2" data-keywords="배대지선택,넥스트배송,올댓,퀵스타,CS,소통,포장품질">
+<!-- ===== CH2 ===== -->
+<div class="chapter" id="ch2" data-keywords="배대지선택,넥스트배송,CS,소통,포장품질">
 <h2 class="chapter-title">2. 배대지 선택의 기술</h2>
 
 <div class="section" id="s2-1">
-<h3 class="section-title">"좋고 나쁨보다, 나에게 맞느냐가 중요합니다."</h3>
-<p>배대지 고르는 기준은 딱 <strong>4가지</strong>입니다.</p>
+<h3 class="section-title">배대지 선택 기준 4가지</h3>
 <table>
 <thead><tr><th>기준</th><th>왜 중요한가</th></tr></thead>
 <tbody>
@@ -527,71 +564,54 @@ mark.search-highlight {
 <tr><td><strong>배송비</strong></td><td>같은 무게에 얼마인지. 단, 싸다고 다 좋은 건 아닙니다</td></tr>
 </tbody>
 </table>
+<blockquote><p>"좋고 나쁨보다, <strong>나에게 맞느냐</strong>가 중요합니다."</p></blockquote>
 </div>
 
 <div class="section" id="s2-2">
-<h3 class="section-title">내가 쓰는 배대지 3곳</h3>
-<p>저는 3개 배대지를 <strong>용도별로</strong> 나눠서 씁니다.</p>
-<table>
-<thead><tr><th>배대지</th><th>위치</th><th>역할</th><th>특징</th></tr></thead>
-<tbody>
-<tr><td><strong>넥스트배송</strong></td><td>산둥성 웨이하이</td><td><strong>주력 배대지</strong> (90%+)</td><td>포장 꼼꼼, 보험 지원, 경동택배 연계, C/S 정확</td></tr>
-<tr><td><strong>올댓</strong></td><td>산둥성 웨이하이</td><td>보조 배대지</td><td>배송비보험 있음. 다만 <strong>가격취하에 잘 걸림</strong></td></tr>
-<tr><td><strong>퀵스타</strong></td><td>산둥성 웨이하이</td><td>특수 품목 전용</td><td>전기자전거 등 통관 가능. 회수비 2배라 주의</td></tr>
-</tbody>
-</table>
-<blockquote><p><strong>처음 시작하는 분은 넥스트배송 하나만 쓰면 됩니다.</strong> 나머지는 물량 늘어나면 그때 추가하세요.</p></blockquote>
-</div>
-
-<div class="section" id="s2-3">
-<h3 class="section-title">넥스트배송을 주력으로 쓰는 이유</h3>
+<h3 class="section-title">넥스트배송을 추천하는 이유</h3>
 <ol>
-<li><strong>포장이 말도 안 되게 꼼꼼합니다</strong> — 고객이 뜯다가 깨뜨린 걸 파손 신고하는 경우가 있을 정도</li>
-<li><strong>경동택배 연계가 됩니다</strong> — 크무비(큰 상품) 하려면 경동택배 필수</li>
-<li><strong>C/S가 정확합니다</strong> — 카카오톡 채널톡으로 양식 보내면 처리됨</li>
-<li><strong>보험 시스템이 체계적입니다</strong> — 화물보험 + 배송비보험</li>
-<li><strong>샵마인 연동</strong> — 자동으로 고객 이름/주소 기입</li>
+<li><strong>포장이 꼼꼼합니다</strong> — 국제배송 중 파손 위험 최소화</li>
+<li><strong>경동택배 연계</strong> — 크무비(큰 상품) 하려면 경동택배 필수</li>
+<li><strong>C/S가 정확합니다</strong> — 카카오톡 채널톡으로 양식 보내면 처리</li>
+<li><strong>보험 시스템이 체계적</strong> — 화물보험 + 배송비보험</li>
+<li><strong>샵마인 연동</strong> — 자동으로 고객 정보 기입</li>
 </ol>
+<blockquote><p><strong>처음 시작하는 분은 넥스트배송 하나만 쓰면 됩니다.</strong></p></blockquote>
 </div>
 </div>
 
-<!-- ===== CHAPTER 3 ===== -->
+<!-- ===== CH3 ===== -->
 <div class="chapter" id="ch3" data-keywords="회원가입,세팅,운송방식,인천2,배송대행,구매대행,LCL,예치금">
 <h2 class="chapter-title">3. 넥스트배송 시작하기</h2>
 
 <div class="section" id="s3-1">
-<h3 class="section-title">3-1. 회원가입</h3>
-<p>넥스트배송 사이트에서 회원가입하세요.</p>
-<blockquote><p><strong>주의:</strong> 네이버 로그인은 비추천. 일반 회원가입으로 진행하세요.</p></blockquote>
+<h3 class="section-title">3-1. 회원가입 & 초기 세팅</h3>
+<p>넥스트배송 사이트에서 회원가입하세요. (네이버 로그인 비추천, 일반 가입 권장)</p>
 <p>가입 후 <strong>채널톡으로 "탄생님 수강생"이라고 말씀</strong>하시면 등급 적용해줍니다.</p>
-</div>
-
-<div class="section" id="s3-2">
-<h3 class="section-title">3-2. 초기 세팅 (반드시 해야 할 것)</h3>
+<h4>필수 세팅 3가지</h4>
 <ol>
-<li><strong>운송방식 변경</strong>: 설정 > 배송대행지 계정관리 > 넥스트배대지 "수정" > 운송방식 <strong>인천2(해운)</strong> 선택 저장</li>
-<li><strong>SMS 수신 '예'</strong>: 회원정보에서 체크 → 입고/출고 알림톡 수신</li>
-<li><strong>예치금 자동결제 설정</strong>: 편의를 위해 자동결제 기능 활성화 권장</li>
+<li><strong>운송방식 변경</strong>: 설정 > 계정관리 > 운송방식 <strong>인천2(해운)</strong> 선택</li>
+<li><strong>SMS 수신 '예'</strong>: 입고/출고 알림톡 수신</li>
+<li><strong>예치금 자동결제</strong>: 자동결제 기능 활성화 권장</li>
 </ol>
 </div>
 
-<div class="section" id="s3-3">
-<h3 class="section-title">3-3. 서비스 구분 (3가지)</h3>
+<div class="section" id="s3-2">
+<h3 class="section-title">3-2. 서비스 구분</h3>
 <table>
 <thead><tr><th>서비스</th><th>설명</th><th>누가 쓰나</th></tr></thead>
 <tbody>
 <tr><td><strong>배송대행</strong></td><td>내가 타오바오에서 직접 사고, 배대지는 배송만</td><td><strong>기본. 이걸 씁니다</strong></td></tr>
-<tr><td><strong>구매대행</strong></td><td>배대지가 대신 사고 + 배송까지</td><td>잘 안 씀. 수수료 5% 추가</td></tr>
+<tr><td><strong>구매대행</strong></td><td>배대지가 대신 사고 + 배송까지</td><td>수수료 5% 추가</td></tr>
 <tr><td><strong>사업자 LCL 선적</strong></td><td>사업자 전용 대량 해상운송</td><td>물량 많아지면 고려</td></tr>
 </tbody>
 </table>
-<blockquote><p><strong>처음엔 "배송대행"만 쓰면 됩니다.</strong></p></blockquote>
 </div>
 </div>
 
-<!-- ===== CHAPTER 4 ===== -->
+<!-- ===== CH4 ===== -->
 <div class="chapter" id="ch4" data-keywords="타오바오,배송지,주소,사서함,웨이하이,산둥성">
-<h2 class="chapter-title">4. 타오바오에서 배송지 세팅</h2>
+<h2 class="chapter-title">4. 타오바오 배송지 세팅</h2>
 
 <div class="section" id="s4-1">
 <h3 class="section-title">4-1. 넥스트배송 중문 주소</h3>
@@ -600,28 +620,16 @@ mark.search-highlight {
 우편번호: 264211
 연락처: 18562629352</code></pre>
 <blockquote><p><strong>사서함 번호를 반드시 주소에 함께 기재하세요.</strong> 사서함 번호가 없으면 노데이터 처리됩니다.</p></blockquote>
-</div>
-
-<div class="section" id="s4-2">
-<h3 class="section-title">4-2. 배대지별 주소 구분</h3>
-<table>
-<thead><tr><th>배대지</th><th>식별 키워드</th></tr></thead>
-<tbody>
-<tr><td>넥스트 (AT5656)</td><td>환추이구 + 사서함 AT5656</td></tr>
-<tr><td>올댓</td><td>환추이구 쏭산도</td></tr>
-<tr><td>퀵스타</td><td>환추이구 팡린가도</td></tr>
-</tbody>
-</table>
-<blockquote><p><strong>실수 방지:</strong> "올댓에 보낸 줄 알고 기다렸는데 넥스트에 와 있었다" — 이런 일 실제로 일어납니다. 주문 시 <strong>배송지 확인</strong>하세요.</p></blockquote>
+<p>타오바오 결제 페이지에서 이 주소를 <strong>기본 배송지</strong>로 등록해두세요.</p>
 </div>
 </div>
 
-<!-- ===== CHAPTER 5 ===== -->
-<div class="chapter" id="ch5" data-keywords="주문서,통관번호,트래킹번호,HS코드,신고가격,접수대기,접수신청,수취인,샵마인">
+<!-- ===== CH5 ===== -->
+<div class="chapter" id="ch5" data-keywords="주문서,통관번호,트래킹번호,HS코드,신고가격,접수신청,수취인,샵마인">
 <h2 class="chapter-title">5. 주문서 작성 완전 가이드</h2>
 
 <div class="section" id="s5-1">
-<h3 class="section-title">5-1. 주문서에 필요한 정보 7가지</h3>
+<h3 class="section-title">5-1. 주문서에 필요한 정보</h3>
 <table>
 <thead><tr><th>항목</th><th>설명</th><th>주의사항</th></tr></thead>
 <tbody>
@@ -637,21 +645,7 @@ mark.search-highlight {
 </div>
 
 <div class="section" id="s5-2">
-<h3 class="section-title">5-2. 개인통관고유번호 안내 문자 (복사해서 쓰세요)</h3>
-<pre><code>안녕하세요, 고객님. 주문해주신 [스토어명]입니다!
-
-구매하신 제품은 해외배송 상품으로 개인통관고유번호가 필요합니다.
-구매 시 누락된 경우 문자를 통해 발급 안내 도와드리고 있습니다!^^
-
-아래 링크를 통해 조회 후, P로 시작하는 통관번호 회신 부탁드립니다.
-
-&lt;수취하실 분의 성함과 휴대폰번호로 만든 통관고유번호 보내주시면 되십니다.&gt;
-
-https://unipass.customs.go.kr/csp/persIndex.do</code></pre>
-</div>
-
-<div class="section" id="s5-3">
-<h3 class="section-title">5-3. 주문서 작성 STEP BY STEP</h3>
+<h3 class="section-title">5-2. 주문서 작성 흐름</h3>
 <pre><code>[STEP 1] 타오바오/1688에서 상품 구매 완료
     ↓
 [STEP 2] 넥스트배송 홈페이지 → 배송대행 탭 → 주문서 작성
@@ -665,19 +659,17 @@ https://unipass.customs.go.kr/csp/persIndex.do</code></pre>
 [STEP 6] 포장 방식 &amp; 검수 방식 선택
     ↓
 [STEP 7] 접수신청 → 완료</code></pre>
-<blockquote><p><strong>샵마인 연동 팁:</strong> 샵마인에서 넥스트배송 버튼을 누르면 고객 이름/주소가 자동 기입됩니다.</p></blockquote>
 </div>
 
-<div class="section" id="s5-4">
-<h3 class="section-title">5-4. 주문서 상태값 완전 이해</h3>
+<div class="section" id="s5-3">
+<h3 class="section-title">5-3. 주문서 상태값</h3>
 <table>
 <thead><tr><th>상태</th><th>의미</th><th>내가 할 일</th></tr></thead>
 <tbody>
-<tr><td><strong>접수대기</strong></td><td>주문서 작성됨. 정상 입/출고 불가</td><td>재고 쌓기 시에만 사용</td></tr>
 <tr><td><strong>접수신청</strong></td><td>실제 출고 가능 상태</td><td>정상 주문은 반드시 이 상태로</td></tr>
 <tr><td><strong>입고대기</strong></td><td>중국 내 배송 중</td><td>기다림</td></tr>
 <tr><td><strong>입고완료</strong></td><td>배대지 도착</td><td>실사보기 확인 → 출고요청</td></tr>
-<tr><td><strong>오류입고</strong></td><td>트래킹 불일치/파손/수량오류</td><td>중판 소통 후 처리</td></tr>
+<tr><td><strong>오류입고</strong></td><td>트래킹 불일치/파손/수량오류</td><td>판매자 소통 후 처리</td></tr>
 <tr><td><strong>결제대기</strong></td><td>정밀검수 등 추가 비용</td><td><strong>수동으로 결제하기 클릭 필수</strong></td></tr>
 <tr><td><strong>출고보류</strong></td><td>임의로 출고 중단</td><td>재개 시 배대지 카톡</td></tr>
 <tr><td><strong>통관중</strong></td><td>세관 통관 진행</td><td>가격취하 시 서류 제출</td></tr>
@@ -687,31 +679,21 @@ https://unipass.customs.go.kr/csp/persIndex.do</code></pre>
 </table>
 </div>
 
-<div class="section" id="s5-5">
-<h3 class="section-title">5-5. 접수대기 vs 접수신청 — 핵심!</h3>
-<blockquote>
-<p><strong>접수대기</strong> = 재고 쌓기 시에만 사용. 이 상태에서는 <strong>정상 입/출고가 불가능</strong>합니다.</p>
-<p><strong>접수신청</strong> = 실제로 고객에게 보낼 주문. <strong>반드시 접수신청으로</strong> 해야 합니다.</p>
-</blockquote>
-<p>재고로 쌓아뒀던 걸 고객 주문 들어와서 보내야 할 때:<br>→ 수취인 변경 + <strong>접수대기 → 접수신청으로 변경</strong> + 출고요청</p>
-</div>
-
-<div class="section" id="s5-6">
-<h3 class="section-title">5-6. HS코드 & 신고가격</h3>
-<p>"통관품목 검색"에 상품 키워드 넣으면 리스트 뜹니다. GPT에 물어봐도 되고, 배대지 채널톡에 문의해도 됩니다. <strong>대략 비슷한 카테고리</strong>면 괜찮습니다.</p>
+<div class="section" id="s5-4">
+<h3 class="section-title">5-4. HS코드 & 신고가격</h3>
+<p>"통관품목 검색"에 상품 키워드 넣으면 리스트가 뜹니다. GPT에 물어봐도 되고, 배대지 채널톡에 문의해도 됩니다.</p>
 <table>
 <thead><tr><th>상황</th><th>신고 방법</th></tr></thead>
 <tbody>
-<tr><td><strong>구매대행업 (우리)</strong></td><td><strong>마켓 판매가</strong> 기준 신고</td></tr>
+<tr><td><strong>구매대행업</strong></td><td><strong>마켓 판매가</strong> 기준 신고</td></tr>
 <tr><td>해외직구 (개인)</td><td>해외 구매가 신고</td></tr>
 <tr><td>사은품/추가 부품</td><td>0원이면 <strong>30위안</strong>으로 기재</td></tr>
 </tbody>
 </table>
-<blockquote><p><strong>주의:</strong> 1000위안 이상 상품은 그대로 넣으면 가격취하 확률 높음. 통관 파트에서 자세히 다룹니다.</p></blockquote>
 </div>
 </div>
 
-<!-- ===== CHAPTER 6 ===== -->
+<!-- ===== CH6 ===== -->
 <div class="chapter" id="ch6" data-keywords="트래킹번호,멀티트래킹,알리왕왕,판매자소통,착불,박스수량,중문">
 <h2 class="chapter-title">6. 트래킹번호 & 판매자 소통</h2>
 
@@ -720,46 +702,40 @@ https://unipass.customs.go.kr/csp/persIndex.do</code></pre>
 <table>
 <thead><tr><th>주의사항</th><th>설명</th></tr></thead>
 <tbody>
-<tr><td><strong>영문 포함 시 영문부터 입력</strong></td><td>숫자만 넣으면 입고 누락. YT12345678 이면 YT부터</td></tr>
+<tr><td><strong>영문 포함 시 영문부터 입력</strong></td><td>숫자만 넣으면 입고 누락</td></tr>
 <tr><td><strong>실제 출고 후에만 발급</strong></td><td>판매자가 "보냈다"고 해도 실제 출고 전이면 번호 없음</td></tr>
-<tr><td><strong>2개 이상일 수 있음</strong></td><td>크기 크거나 수량 많으면 분할 발송 → 트래킹 2개+</td></tr>
+<tr><td><strong>2개 이상일 수 있음</strong></td><td>크기 크거나 수량 많으면 분할 발송</td></tr>
 <tr><td><strong>타오바오에서 1개만 보일 수 있음</strong></td><td>나머지는 알리왕왕으로 판매자에게 직접 확인</td></tr>
 </tbody>
 </table>
 </div>
 
 <div class="section" id="s6-2">
-<h3 class="section-title">6-2. 판매자에게 반드시 확인할 것 3가지</h3>
+<h3 class="section-title">6-2. 판매자에게 반드시 확인할 것</h3>
 
 <h4>① 포장 후 무게</h4>
 <pre><code>중문: 打包后有多重？请告诉我打包后的公斤重量。
-번역: 포장 후 무게가 얼마인가요? 포장 후 킬로그램 무게를 알려주세요.</code></pre>
-<blockquote><p><strong>주의:</strong> 중국은 "근(斤)"을 쓰는데, <strong>1근 = 약 0.5kg</strong>입니다. 반드시 KG 단위로 확인하세요.</p></blockquote>
+번역: 포장 후 킬로그램 무게를 알려주세요.</code></pre>
+<blockquote><p><strong>주의:</strong> 중국은 "근(斤)"을 쓰는데, <strong>1근 = 약 0.5kg</strong>입니다. 반드시 KG 단위로 확인.</p></blockquote>
 
 <h4>② 포장 상태 & 나무포장 여부</h4>
 <pre><code>중문: 包装是什么样的？给我发一下图片吧。
-번역: 포장이 어떤가요? 사진 보내주세요.
-
-중문: 是木箱包装么？需要追加费用么？
-번역: 나무 포장인가요? 추가 비용이 있나요?
-
-중문: 里面有缓冲包装么？
-번역: 내부에 완충 포장이 있나요?</code></pre>
+중문: 是木箱包装么？
+중문: 里面有缓冲包装么？</code></pre>
 
 <h4>③ 총 박스 수 & 트래킹번호</h4>
 <pre><code>중문: 总共几个箱子？每个箱子的快递单号是多少？
-번역: 총 몇 박스인가요? 각 박스의 운송장번호는 뭔가요?</code></pre>
-<blockquote><p><strong>실수 사례:</strong> 예초기 같은 건 소포 2개로 나뉘어 발송됩니다. 1박스만 수령하고 나머지를 놓치는 경우가 실제로 발생합니다.</p></blockquote>
+번역: 총 몇 박스인가요? 각 박스의 운송장번호는?</code></pre>
+<blockquote><p>대형 상품은 소포 2개로 나뉘어 발송되는 경우가 있습니다. <strong>반드시 확인하세요.</strong></p></blockquote>
 </div>
 
 <div class="section" id="s6-3">
-<h3 class="section-title">6-3. 멀티트래킹번호 & 착불 대응</h3>
-<p><strong>멀티트래킹:</strong> 하나의 주문서에 여러 트래킹번호를 입력하는 기능. 소포 2개로 나오는 경우나 부품 재발급 시 사용합니다.</p>
-<p><strong>착불 의심:</strong> 크무비 상품의 트래킹번호가 며칠째 안 움직이면 → 중국 내 물류비 착불 미결제 가능성. 판매자에게 확인하세요.</p>
+<h3 class="section-title">6-3. 멀티트래킹번호</h3>
+<p>하나의 주문서에 <strong>여러 트래킹번호를 입력</strong>할 수 있는 기능입니다. 소포 2개로 나오는 경우나 부품 재발급 시 사용합니다.</p>
 </div>
 </div>
 
-<!-- ===== CHAPTER 7 ===== -->
+<!-- ===== CH7 ===== -->
 <div class="chapter" id="ch7" data-keywords="입고,출고,임의서명,실사보기,알림톡,마감시간">
 <h2 class="chapter-title">7. 입고부터 출고까지</h2>
 
@@ -775,29 +751,27 @@ https://unipass.customs.go.kr/csp/persIndex.do</code></pre>
 </div>
 
 <div class="section" id="s7-2">
-<h3 class="section-title">7-2. 임의서명 — 이것 모르면 당합니다</h3>
-<p>중국 배대지 근무시간은 <strong>08:00~17:00</strong>입니다.</p>
-<p>저녁이나 이른 아침에 "서명 완료"가 뜨면? <strong>택배기사의 임의 서명</strong>입니다.</p>
+<h3 class="section-title">7-2. 임의서명 주의</h3>
+<p>중국 배대지 근무시간은 <strong>08:00~17:00</strong>. 저녁/이른 아침의 "서명 완료"는 <strong>택배기사의 임의 서명</strong>입니다.</p>
 <ul>
-<li>서명 찍힌다고 바로 입고된 게 아닙니다</li>
-<li>서명 후 <strong>1~2일 뒤에 실제 전달</strong>되는 경우가 흔합니다</li>
-<li>서명 완료 후 <strong>2일 내 입고 안 되면</strong> 배대지에 문의하세요</li>
+<li>서명 후 <strong>1~2일 뒤에 실제 전달</strong>되는 경우 흔합니다</li>
+<li>서명 완료 후 <strong>2일 내 입고 안 되면</strong> 배대지에 문의</li>
 </ul>
 </div>
 
 <div class="section" id="s7-3">
-<h3 class="section-title">7-3. 정상 입고 후 & 출고</h3>
+<h3 class="section-title">7-3. 입고 후 출고 프로세스</h3>
 <ol>
 <li><strong>알림톡</strong>으로 입고 알림 수신</li>
 <li>넥스트 홈페이지에서 <strong>"실사보기"</strong> 클릭 → 사진 확인</li>
 <li>파손/이상 없으면 → <strong>출고요청</strong></li>
 <li>문제 있으면 → 배대지 채널톡으로 소통</li>
 </ol>
-<blockquote><p><strong>고객 취소/주소변경 대비:</strong> 마감시간 전에 수정 가능한 시간대를 파악해두세요. 통관 중에는 주소변경이 <strong>매우 어렵습니다.</strong></p></blockquote>
+<blockquote><p>통관 중에는 주소변경이 <strong>매우 어렵습니다.</strong> 출고 전에 변경하세요.</p></blockquote>
 </div>
 </div>
 
-<!-- ===== CHAPTER 8 ===== -->
+<!-- ===== CH8 ===== -->
 <div class="chapter" id="ch8" data-keywords="검수,기본검수,정밀검수,작동검수,실사,결제대기">
 <h2 class="chapter-title">8. 검수의 모든 것</h2>
 
@@ -808,10 +782,14 @@ https://unipass.customs.go.kr/csp/persIndex.do</code></pre>
 <tbody>
 <tr><td><strong>검수안함</strong></td><td>포장 그대로 출고</td><td>무료</td><td>빠른 출고 필요 시</td></tr>
 <tr><td><strong>기본검수</strong></td><td>외관/옵션/컬러 확인. 실사 1장</td><td><strong>무료</strong></td><td><strong>기본적으로 이걸 씁니다</strong></td></tr>
-<tr><td><strong>정밀검수</strong></td><td>제품 꺼내서 상세 촬영</td><td>유료 (약 4,000~7,000원)</td><td>부품 확인 필요, 고가 상품</td></tr>
+<tr><td><strong>정밀검수</strong></td><td>제품 꺼내서 상세 촬영</td><td>약 4,000~7,000원</td><td>부품 확인 필요, 고가 상품</td></tr>
 <tr><td><strong>작동검수</strong></td><td>전원 ON/OFF만 확인</td><td>유료</td><td>전자제품 (전원코드 필수)</td></tr>
 </tbody>
 </table>
+<blockquote>
+<p><strong>정밀검수 주의:</strong> 넥스트에서 자동 결제하지 않음 → <strong>직접 결제하기 클릭 필수.</strong></p>
+<p><strong>작동검수 한계:</strong> 전원 ON/OFF만 확인. 기능 테스트 불가. 조립 후 작동검수 불가. 전원코드 없으면 불가.</p>
+</blockquote>
 </div>
 
 <div class="section" id="s8-2">
@@ -820,19 +798,39 @@ https://unipass.customs.go.kr/csp/persIndex.do</code></pre>
 <thead><tr><th>상품</th><th>추천 검수</th></tr></thead>
 <tbody>
 <tr><td>일반 소형 상품</td><td>기본검수</td></tr>
-<tr><td>고가 전자제품 (인형뽑기 등)</td><td><strong>정밀검수</strong></td></tr>
-<tr><td>부품 많은 상품 (엔진톱 등)</td><td><strong>정밀검수</strong></td></tr>
+<tr><td>고가 전자제품</td><td><strong>정밀검수</strong></td></tr>
+<tr><td>부품 많은 상품</td><td><strong>정밀검수</strong></td></tr>
 <tr><td>가구/대형</td><td>기본검수 + 필요 시 정밀</td></tr>
 <tr><td>의류</td><td>검수안함 or 기본검수</td></tr>
 <tr><td>조립 제품/수량 3개 이상</td><td><strong>정밀검수 권장</strong></td></tr>
+<tr><td>밀봉 제품</td><td><strong>정밀검수</strong> (개봉 확인 필요 시)</td></tr>
 </tbody>
 </table>
-<blockquote><p><strong>정밀검수 주의:</strong> 넥스트에서 자동 결제하지 않습니다 → <strong>직접 결제하기 클릭 필수.</strong> "결제대기"에 쌓이면 출고 안 됩니다.</p>
-<p><strong>작동검수 한계:</strong> "배대지는 A/S 센터가 아닙니다." 전원 ON/OFF만 확인. 기능 테스트 불가.</p></blockquote>
+</div>
+
+<div class="section" id="s8-3">
+<h3 class="section-title">8-3. 기본검수 상세 규칙</h3>
+<ul>
+<li>외관 위주 검수 + 옵션/컬러 확인</li>
+<li><strong>무료 실사 1장</strong> (1회 한정) — 외부 박스 또는 내부 박스 한 면만 촬영</li>
+<li>수량 3개 이상, 조립 제품, 밀봉 제품은 기본검수로 확인 어려움 → <strong>정밀검수 필요</strong></li>
+<li>기본검수 후 추가 사진 요청 시 → 정밀검수 비용 발생</li>
+</ul>
+</div>
+
+<div class="section" id="s8-4">
+<h3 class="section-title">8-4. 정밀검수 상세</h3>
+<ul>
+<li>제품을 꺼내서 상세 촬영</li>
+<li>비용: 입고 시 박스 기준으로 산정</li>
+<li>노데이터 검수 요청 시 → 정밀검수로 진행</li>
+<li>포장완료 후 검수 요청 시 → 정밀검수로 진행</li>
+<li><strong>넥스트에서 자동 결제하지 않음</strong> — "결제대기"에서 직접 결제 클릭 필수</li>
+</ul>
 </div>
 </div>
 
-<!-- ===== CHAPTER 9 ===== -->
+<!-- ===== CH9 ===== -->
 <div class="chapter" id="ch9" data-keywords="포장,에어스틱,에어캡,각대,모서리보호대,발포지,추천포장,나무포장,크무비,파손">
 <h2 class="chapter-title">9. 포장 전략 — 크무비 특화</h2>
 
@@ -841,33 +839,42 @@ https://unipass.customs.go.kr/csp/persIndex.do</code></pre>
 <table>
 <thead><tr><th>재료</th><th>설명</th><th>용도</th></tr></thead>
 <tbody>
-<tr><td><strong>에어스틱 (에어컬럼)</strong></td><td>두꺼운 공기기둥</td><td><strong>기본 중의 기본. 잘 모르겠으면 에어스틱</strong></td></tr>
+<tr><td><strong>에어스틱</strong></td><td>두꺼운 공기기둥</td><td><strong>기본. 잘 모르겠으면 에어스틱</strong></td></tr>
 <tr><td><strong>에어캡 (뽁뽁이)</strong></td><td>버블랩</td><td>저위험 소형 물품</td></tr>
-<tr><td><strong>각대 (모서리보호대)</strong></td><td>모서리 보호캡</td><td><strong>가구 필수. 에어스틱과 함께</strong></td></tr>
+<tr><td><strong>각대 (모서리보호대)</strong></td><td>모서리 보호캡</td><td><strong>가구 필수</strong></td></tr>
 <tr><td><strong>발포지</strong></td><td>완충 폼</td><td>무거운 상품 (에어캡은 무게에 터짐)</td></tr>
-<tr><td><strong>추천포장</strong></td><td>넥스트가 알아서 포장</td><td>처음엔 이걸로 + 배대지에 사진 보내며 조율</td></tr>
+<tr><td><strong>추천포장</strong></td><td>배대지가 알아서</td><td>처음엔 이걸로 + 사진 보내며 조율</td></tr>
 </tbody>
 </table>
 </div>
 
 <div class="section" id="s9-2">
-<h3 class="section-title">9-2. 카테고리별 포장 기준 (실전)</h3>
+<h3 class="section-title">9-2. 카테고리별 포장 기준</h3>
 <table>
 <thead><tr><th>상품</th><th>포장 방법</th><th>보험</th></tr></thead>
 <tbody>
 <tr><td><strong>가구/책상</strong></td><td>발포지 + 추천포장 + 모서리보호대 + 에어스틱</td><td><strong>필수</strong></td></tr>
-<tr><td><strong>엔진톱</strong></td><td>에어캡 또는 발포지 + 추천포장</td><td>필수</td></tr>
-<tr><td><strong>인형뽑기기계</strong></td><td>기본 + 에어캡</td><td>필수</td></tr>
+<tr><td><strong>기계류</strong></td><td>에어캡 또는 발포지 + 추천포장</td><td>필수</td></tr>
 <tr><td><strong>유리 제품</strong></td><td>에어캡 + 발포지</td><td>필수</td></tr>
-<tr><td>일반 부품/플라스틱</td><td>에어스틱</td><td>권장</td></tr>
-<tr><td>저위험 소형</td><td>에어캡</td><td>선택</td></tr>
+<tr><td>일반 부품</td><td>에어스틱</td><td>권장</td></tr>
 <tr><td>의류/직물</td><td><strong>포장 불필요</strong></td><td>불필요</td></tr>
 </tbody>
 </table>
 </div>
 
 <div class="section" id="s9-3">
-<h3 class="section-title">9-3. 나무포장 함정 — 통관에서 막힙니다</h3>
+<h3 class="section-title">9-3. 추천포장 상세</h3>
+<ul>
+<li>에어캡/에어팩, 발포지, 우드 포장 등 상품 특성에 맞춰 배대지가 판단하여 적용</li>
+<li><strong>파손 100% 방지 서비스는 아닙니다</strong> — 최선의 포장이지 완벽한 보장은 아님</li>
+<li>목재 프레임 상품: 별도 요청 없으면 해체/내부 검수 미진행</li>
+<li>동일 제품이라도 작업자에 따라 포장 방식이 다를 수 있음</li>
+<li>처음엔 배대지에 상품 사진 보내고 <strong>추천 포장 방식 상의</strong>하는 것을 권장</li>
+</ul>
+</div>
+
+<div class="section" id="s9-4">
+<h3 class="section-title">9-4. 나무포장 함정</h3>
 <table>
 <thead><tr><th>나무 종류</th><th>수출 가능</th><th>특징</th></tr></thead>
 <tbody>
@@ -875,18 +882,29 @@ https://unipass.customs.go.kr/csp/persIndex.do</code></pre>
 <tr><td><strong>합판/압축목재</strong></td><td><strong>가능</strong></td><td>매끈하고 가공된 느낌</td></tr>
 </tbody>
 </table>
-<blockquote><p><strong>판단이 어려우면?</strong> 판매자에게 포장 사진 받아서 배대지에 보내고 확인 요청하세요.</p></blockquote>
+<blockquote><p>판단 어려우면 판매자에게 포장 사진 받아서 배대지에 확인 요청.</p></blockquote>
+</div>
+
+<div class="section" id="s9-5">
+<h3 class="section-title">9-5. 우드포장(나무포장) 요청</h3>
+<p>특별히 튼튼한 포장이 필요한 경우 우드포장을 요청할 수 있습니다.</p>
+<ul>
+<li>추가 비용 발생</li>
+<li>우드 무게 때문에 <strong>배송비도 생각보다 많이 나올 수 있음</strong></li>
+<li>반드시 합판/압축목재 사용 여부 확인 (원목 사용 시 통관 문제)</li>
+<li>사전에 배대지와 비용 소통 필수</li>
+</ul>
 </div>
 </div>
 
-<!-- ===== CHAPTER 10 ===== -->
+<!-- ===== CH10 ===== -->
 <div class="chapter" id="ch10" data-keywords="배송비,해운,할증료,LCL,경동,합배송,나눔배송,도서산간,원가계산,마진,수수료,부피운임">
 <h2 class="chapter-title">10. 배송비 완전 정복</h2>
 
 <div class="section" id="s10-1">
 <h3 class="section-title">10-1. 기본 배송비 & 할증료</h3>
-<blockquote><p><strong>해운 기본: 1KG = 5,100원</strong> (인천2 기준) / 부피운임 전면 폐지 — 실제 무게 기준 / 카드 수수료 0%</p></blockquote>
-<h4>CJ/한진 택배 할증료 (포장 후 무게 기준)</h4>
+<blockquote><p><strong>해운 기본: 1KG = 5,100원</strong> (인천2 기준) / 부피운임 전면 폐지 / 카드 수수료 0%</p></blockquote>
+<h4>CJ/한진 택배 할증료</h4>
 <table>
 <thead><tr><th>무게 구간</th><th>할증료</th></tr></thead>
 <tbody>
@@ -897,41 +915,51 @@ https://unipass.customs.go.kr/csp/persIndex.do</code></pre>
 <tr><td>15.1 ~ 20kg</td><td>9,000원</td></tr>
 </tbody>
 </table>
-<p>포장 후 <strong>세변의 합</strong> 기준 할증료와 <strong>무게</strong> 기준 할증료 중 <strong>더 큰 값</strong>이 적용됩니다.</p>
+<p>포장 후 <strong>세변의 합</strong> 기준 택배할증료와 <strong>무게</strong> 기준 할증료 중 <strong>더 큰 값</strong>이 적용됩니다.</p>
+<blockquote><p>멀티박스인 경우 별도 할증료 없음. 경동택배로 분류되었으나 CJ/한진으로 배송 시 <strong>1만 원 이상 할증</strong> 가능.</p></blockquote>
+
+<h4>CJ/한진 택배 할증료 (포장 후 세변의 합 기준)</h4>
+<table>
+<thead><tr><th>세변의 합</th><th>할증료</th></tr></thead>
+<tbody>
+<tr><td>0 ~ 80cm</td><td><strong>0원</strong></td></tr>
+<tr><td>80.1 ~ 100cm</td><td>500원</td></tr>
+<tr><td>100.1 ~ 120cm</td><td>1,000원</td></tr>
+<tr><td>120.1 ~ 140cm</td><td>3,000원</td></tr>
+<tr><td>140.1 ~ 160cm</td><td>9,000원</td></tr>
+</tbody>
+</table>
 </div>
 
 <div class="section" id="s10-2">
-<h3 class="section-title">10-2. 경동택배 분류 기준 & LCL</h3>
-<p>아래 조건 중 하나라도 해당 → <strong>경동택배(대형화물)</strong>:</p>
+<h3 class="section-title">10-2. 경동택배 분류 기준</h3>
+<p>아래 중 하나라도 해당 → <strong>경동택배(대형화물)</strong>:</p>
 <ul>
 <li>포장 후 <strong>세변의 합 150~160cm 이상</strong></li>
 <li><strong>한 변 1m 이상</strong></li>
 <li>무게 <strong>20kg 이상</strong></li>
 </ul>
-<h4>LCL 해상운임 (사업자 전용)</h4>
-<p><strong>1CBM = 44달러</strong> (환율 1,500원 적용 시 약 66,000원). 물량 많아지면 kg당 단가가 훨씬 저렴.</p>
+<blockquote><p>경동택배 앱을 다운로드하면 가로/세로/무게로 <strong>예상비용 계산</strong>이 가능합니다. 제주도는 경동비가 <strong>2~2.5배</strong> 나옵니다.</p></blockquote>
 </div>
 
 <div class="section" id="s10-3">
-<h3 class="section-title">10-3. 합배송·나눔배송·도서산간</h3>
+<h3 class="section-title">10-3. 합배송 & 기타</h3>
 <p><strong>합배송:</strong> 주문서 1개에 최대 30개 상품. <strong>트래킹번호 3개까지 무료</strong>, 4개부터 1,000원/개. 멀티박스 추가 3,000원/박스.</p>
-<p><strong>나눔배송:</strong> 입고 전에 나눌 만큼의 주문서를 <strong>미리 작성</strong>해야 함. 사후 분리 불가.</p>
-<p><strong>도서산간:</strong> CJ/한진 6,000원, 경동택배 별도.</p>
+<p><strong>나눔배송:</strong> 입고 전에 나눌 만큼의 주문서를 <strong>미리 작성</strong>. 사후 분리 불가.</p>
+<p><strong>도서산간:</strong> CJ/한진 6,000원 추가.</p>
+<p><strong>LCL 해상운임 (사업자 전용):</strong> 1CBM = 44달러.</p>
 </div>
 
 <div class="section" id="s10-4">
-<h3 class="section-title">10-4. 원가 계산 공식 (실전용)</h3>
+<h3 class="section-title">10-4. 원가 계산 공식</h3>
 <pre><code>원가 = 위안(CNY) × 205 + 타오바오 수수료 3%
 
-판매가 = 원가 + 국제배송비 + 경동택배비 + 마켓수수료 + 마진
-
-순매출 = 정산예정액 - 한화원가 - 배대지결제금액 - 35,000(기본비용) - 경동·기타비용</code></pre>
-<blockquote><p><strong>핵심:</strong> 마켓수수료는 <strong>반드시 제외</strong>하고 순수익을 계산. "실결제 - 마켓수수료 = 정산예정액" → 우리한테 들어오는 건 <strong>정산예정액</strong>.</p></blockquote>
+판매가 = 원가 + 국제배송비 + 경동택배비 + 마켓수수료 + 마진</code></pre>
 <table>
 <thead><tr><th>마켓</th><th>수수료율</th></tr></thead>
 <tbody>
-<tr><td>쿠팡</td><td>10~14% (카테고리별)</td></tr>
-<tr><td>스마트스토어</td><td>~10% (부가세 포함)</td></tr>
+<tr><td>쿠팡</td><td>10~14%</td></tr>
+<tr><td>스마트스토어</td><td>~10%</td></tr>
 <tr><td>G마켓</td><td>~14%</td></tr>
 <tr><td>옥션</td><td>~13%</td></tr>
 </tbody>
@@ -939,7 +967,7 @@ https://unipass.customs.go.kr/csp/persIndex.do</code></pre>
 </div>
 </div>
 
-<!-- ===== CHAPTER 11 ===== -->
+<!-- ===== CH11 ===== -->
 <div class="chapter" id="ch11" data-keywords="통관,관부가세,가격취하,합산과세,지재권,목록통관,간이통관,유니패스,금지품목,수입신고,FTA,사업자통관,언더밸류">
 <h2 class="chapter-title">11. 통관 완전 가이드</h2>
 
@@ -948,12 +976,12 @@ https://unipass.customs.go.kr/csp/persIndex.do</code></pre>
 <table>
 <thead><tr><th>방식</th><th>기준</th><th>특징</th></tr></thead>
 <tbody>
-<tr><td><strong>목록통관</strong></td><td>$150 이하</td><td>가장 빠름. 송장만으로 통관. 개인통관부호 필요</td></tr>
+<tr><td><strong>목록통관</strong></td><td>$150 이하</td><td>가장 빠름. 송장만으로 통관</td></tr>
 <tr><td><strong>간이수입신고</strong></td><td>$150~$2,000</td><td>간단한 수입신고서 제출</td></tr>
 <tr><td><strong>일반수입신고</strong></td><td>$2,000 초과</td><td>정식 수입신고 + 세관 심사</td></tr>
 </tbody>
 </table>
-<blockquote><p>$150 이하여도 <strong>목록통관 불가 품목</strong> 있음 (블루투스/와이파이 전자제품 등) → 자동 간이통관 변경 → 통관수수료 3,300원 발생</p></blockquote>
+<blockquote><p>$150 이하여도 <strong>목록통관 불가 품목</strong> 있음 (블루투스/와이파이 전자제품 등) → 자동 간이통관 변경 → 통관수수료 3,300원</p></blockquote>
 </div>
 
 <div class="section" id="s11-2">
@@ -964,103 +992,176 @@ https://unipass.customs.go.kr/csp/persIndex.do</code></pre>
 <li><strong>$150 초과</strong> 시 관부가세 부과</li>
 <li>인천1/인천2: <strong>물품 신고가</strong> 기준</li>
 <li>항공/LCL: <strong>물품 신고가 + 해상운임</strong> 기준</li>
+<li>관부가세는 <strong>고객 부담</strong>입니다</li>
 </ul>
-<blockquote><p>관부가세는 <strong>고객 부담</strong>입니다. 절대 대납하지 마세요.<br>안내 문구: "[고객명] 고객님! 세관에서 연락이 오셨을 겁니다. 관부가세 납부하셔야 배송 진행됩니다!"</p></blockquote>
 </div>
 
 <div class="section" id="s11-3">
-<h3 class="section-title">11-3. 가격취하 — 실전에서 가장 많이 겪습니다</h3>
+<h3 class="section-title">11-3. 가격취하</h3>
 <p><strong>가격취하 = 세관이 "이 가격이 너무 싸다"고 판단하여 통관을 보류하는 것</strong></p>
-<h4>가격취하 대응 프로세스</h4>
+<h4>대응 프로세스</h4>
 <pre><code>[STEP 1] 넥스트에서 가격취하 통보 수신
     ↓
 [STEP 2] 구매내역서 + 결제내역서 준비
     ↓
-[STEP 3] 넥스트에 전달 → 세관 제출
-    ↓
-[STEP 4] 필요 시 가격 수정</code></pre>
-
-<h4>핵심 주의사항</h4>
+[STEP 3] 넥스트에 전달 → 세관 제출</code></pre>
 <table>
 <thead><tr><th>주의</th><th>설명</th></tr></thead>
 <tbody>
-<tr><td><strong>타오바오 구매자료 제출 금지</strong></td><td>구매대행업자는 <strong>절대</strong> 타오바오 원가 자료를 세관에 제출하면 안 됨</td></tr>
+<tr><td><strong>타오바오 원가 자료 제출 금지</strong></td><td>구매대행업자는 절대 원가 자료를 세관에 제출하면 안 됨</td></tr>
 <tr><td><strong>제출할 서류</strong></td><td>국내 수취인(고객)의 <strong>오픈마켓 결제 자료</strong></td></tr>
-<tr><td><strong>자주 걸리는 품목</strong></td><td>자전거류(팻바이크 등), 750위안 라인</td></tr>
-<tr><td><strong>언더밸류 경고</strong></td><td>고의 낮은 금액 신고 시 → 과태료 + 수입 제한</td></tr>
+<tr><td><strong>언더밸류 주의</strong></td><td>고의 낮은 금액 신고 → 과태료 + 수입 제한</td></tr>
 </tbody>
 </table>
 </div>
 
 <div class="section" id="s11-4">
-<h3 class="section-title">11-4. 기타 통관 이슈</h3>
-<p><strong>합산과세:</strong> 동일 입항일 2건 이상 도착 시, 세관이 고의적 분할 배송으로 판단하면 가격자료 요구 가능.</p>
-<p><strong>지재권 취하:</strong> 상표권 침해 의심 시 통관 보류. 짝퉁은 당연, 유사 디자인도 걸릴 수 있음.</p>
-<p><strong>사업자 통관:</strong> $150 넘든 안 넘든 동일 처리. 필요 서류: 사업자등록증 + 이메일 + 위임장(첫 수입 시).</p>
-<p><strong>유니패스:</strong> 출고 후~입항 전 조회 불가. 대부분 새벽/오전 조회 가능. 오후까지 안 되면 배대지 문의.</p>
+<h3 class="section-title">11-4. 통관 취하 사유 전체 정리</h3>
+<table>
+<thead><tr><th>취하 사유</th><th>설명</th><th>대응</th></tr></thead>
+<tbody>
+<tr><td><strong>수량 취하</strong></td><td>자가사용 범위 초과 (보통 3~4개까지)</td><td>수량 줄여서 재신고</td></tr>
+<tr><td><strong>빈번 취하</strong></td><td>같은 통관번호로 너무 자주 수입</td><td>통관번호 분산</td></tr>
+<tr><td><strong>가격 취하</strong></td><td>신고 금액이 비정상적으로 낮음</td><td>구매내역서+결제내역서 제출</td></tr>
+<tr><td><strong>합산 취하</strong></td><td>동일인 복수 건 합산과세</td><td>입항일 분리</td></tr>
+<tr><td><strong>지재 취하</strong></td><td>지적재산권 침해 의심</td><td>정품 증빙 or 포기</td></tr>
+<tr><td><strong>요건 취하</strong></td><td>수입 요건(인증 등) 미충족</td><td>인증서 확보</td></tr>
+<tr><td><strong>주소 불일치</strong></td><td>통관부호와 수취인 정보 상이</td><td>정보 수정 후 재제출</td></tr>
+<tr><td><strong>취하건 통관수수료</strong></td><td>취하 처리 시</td><td>5,000원 발생</td></tr>
+</tbody>
+</table>
 </div>
 
 <div class="section" id="s11-5">
-<h3 class="section-title">11-5. 수입 금지 품목</h3>
-<p>닭/소/돼지 성분 제품 | 야생 동식물/씨앗 | 금은괴 | 위험물/불법 의약품 | 화기/병기/도검(칼날 15cm+) | 레이저포인터 | 성인용품 | 고농도 알코올 향수 | 화폐 | 다량 식품/화장품 | 미가공 농산물 | 의료기기 | 코코넛 제품 | 상표권 침해 제품</p>
+<h3 class="section-title">11-5. 합산과세 상세</h3>
+<p>동일 입항일에 2건 이상 도착 시, 각각 $150 이하여도 <strong>합산과세 확인 요청</strong>이 올 수 있습니다.</p>
+<ul>
+<li>2022년 11월 이후 합산과세는 기본적으로 폐지</li>
+<li>단, 세관이 <strong>고의적 분할 배송</strong>으로 판단하면 가격자료 요구 가능</li>
+<li>같은 날 구입한 2건 이상도 합산과세 발생 가능성 있음</li>
+</ul>
+</div>
+
+<div class="section" id="s11-6">
+<h3 class="section-title">11-6. 사업자 통관</h3>
+<ul>
+<li>$150 넘든 안 넘든 <strong>동일 처리</strong></li>
+<li>사업자 통관 수수료 + 관부가세 발생</li>
+<li>필요 서류: <strong>사업자등록증 + 이메일 + 위임장</strong>(첫 수입 시)</li>
+</ul>
+</div>
+
+<div class="section" id="s11-7">
+<h3 class="section-title">11-7. FTA 적용</h3>
+<ul>
+<li>원산지 표기(스티커/미싱) <strong>필수</strong></li>
+<li>원산지 증명서(C/O)를 <strong>별도 요청</strong>해야만 FTA 관세 혜택 가능</li>
+<li>선택 시에만 요청 — 기본 적용이 아님</li>
+</ul>
+</div>
+
+<div class="section" id="s11-8">
+<h3 class="section-title">11-8. 통관 절차 상세</h3>
+<h4>입항 후 통관 흐름</h4>
+<pre><code>입항 (인천, 평택, 군산 등)
+    ↓
+장치장 이동
+    ↓
+X-RAY 검사
+    ↓
+통관 완료 → 국내 택배 배송</code></pre>
+<h4>장치장 종류</h4>
+<table>
+<thead><tr><th>종류</th><th>설명</th><th>속도</th></tr></thead>
+<tbody>
+<tr><td><strong>자가장치장</strong></td><td>특정 특송업체 전용</td><td><strong>더 빠르고 안정적</strong></td></tr>
+<tr><td><strong>지정장치장</strong></td><td>여러 특송업체 공동 이용</td><td>대기 발생 가능</td></tr>
+</tbody>
+</table>
+<blockquote><p>자가장치장 보유 특송업체와 협력하는 배대지를 쓰는 게 유리합니다. 입항 후 통관까지 평균 <strong>2~5일</strong>, 공휴일/명절 전후 더 느림.</p></blockquote>
+</div>
+
+<div class="section" id="s11-9">
+<h3 class="section-title">11-9. 유니패스 사전신고</h3>
+<ul>
+<li><strong>음식이 닿는 물건</strong>(냄비, 찻잔 등)만 신고</li>
+<li>통관 시작 전 = 사전신고 / 통관 시작 후 = 본신고</li>
+<li>신고기관코드: <strong>인천항 미추홀</strong> 선택</li>
+<li>주문 들어오면 배대지 신청하면서 같이 하는 게 편함</li>
+<li>안 해도 큰 문제 없는 경우가 더 많지만, 해두면 안심</li>
+</ul>
+</div>
+
+<div class="section" id="s11-10">
+<h3 class="section-title">11-10. 목록통관 불가 품목 (상세)</h3>
+<p>$150 이하여도 <strong>간이수입신고</strong>가 필요한 품목:</p>
+<ul>
+<li>블루투스/와이파이 탑재 전자제품</li>
+<li>건강기능식품, 의약외품</li>
+<li>화장품 (일정 수량 이상)</li>
+<li>식품류</li>
+<li>유아용품 (KC인증 대상)</li>
+<li>전기용품 (안전인증 대상)</li>
+</ul>
+<blockquote><p>목록통관 불가 시 자동으로 간이통관 변경 → <strong>통관수수료 3,300원</strong> 발생.</p></blockquote>
+</div>
+
+<div class="section" id="s11-11">
+<h3 class="section-title">11-11. 수입 금지 품목</h3>
+<table>
+<thead><tr><th>분류</th><th>품목</th></tr></thead>
+<tbody>
+<tr><td><strong>동물 관련</strong></td><td>닭/소/돼지 성분 제품, 야생 동식물, 씨앗</td></tr>
+<tr><td><strong>위험물</strong></td><td>금은괴, 위험물, 불법 의약품, 핵/방사선 물질</td></tr>
+<tr><td><strong>무기류</strong></td><td>화기/병기, 도검(칼날 15cm+), 재크나이프(6cm+), 비출나이프(5.5cm+)</td></tr>
+<tr><td><strong>기타</strong></td><td>레이저포인터, 성인용품, 고농도 알코올 향수/스프레이</td></tr>
+<tr><td><strong>대량 품목</strong></td><td>화폐, 다량 식품류, 미가공 농산물, 다량 화장품</td></tr>
+<tr><td><strong>인증 필요</strong></td><td>의료기기, 코코넛 제품, 상표권 침해 제품</td></tr>
+</tbody>
+</table>
 </div>
 </div>
 
-<!-- ===== CHAPTER 12 ===== -->
-<div class="chapter" id="ch12" data-keywords="경동택배,송장,가송장,SLX,CJ,한진,착불,선불,돼지코,도서산간,화물">
+<!-- ===== CH12 ===== -->
+<div class="chapter" id="ch12" data-keywords="경동택배,송장,CJ,한진,착불,선불,돼지코,화물">
 <h2 class="chapter-title">12. 국내 배송 — 경동택배 중심</h2>
 
 <div class="section" id="s12-1">
 <h3 class="section-title">12-1. 택배사 구분</h3>
 <table>
-<thead><tr><th>택배사</th><th>용도</th><th>비고</th></tr></thead>
+<thead><tr><th>택배사</th><th>용도</th></tr></thead>
 <tbody>
-<tr><td><strong>경동택배</strong></td><td>대형화물 (크무비 기본)</td><td>넥스트배송 기본 국내배송</td></tr>
-<tr><td><strong>한진택배</strong></td><td>해외직구 중소형</td><td>51로 시작하는 송장</td></tr>
-<tr><td><strong>CJ대한통운</strong></td><td>국내 직송, 가송장</td><td></td></tr>
-<tr><td><strong>롯데택배</strong></td><td>국내 회수/반품</td><td>예약번호 ≠ 송장번호 주의</td></tr>
+<tr><td><strong>경동택배</strong></td><td>대형화물 (크무비 기본)</td></tr>
+<tr><td><strong>한진택배</strong></td><td>해외직구 중소형 (51로 시작)</td></tr>
+<tr><td><strong>CJ대한통운</strong></td><td>국내 직송</td></tr>
+<tr><td><strong>롯데택배</strong></td><td>국내 회수/반품</td></tr>
 </tbody>
 </table>
 </div>
 
 <div class="section" id="s12-2">
-<h3 class="section-title">12-2. 경동택배 송장 확인 & 비용</h3>
-<blockquote><p><strong>경동택배 송장은 매일 오후 1~3시에 넥스트에서 확인 가능.</strong></p></blockquote>
+<h3 class="section-title">12-2. 경동택배 핵심</h3>
 <ul>
-<li>처음에는 한진 번호(51로 시작) → 경동 이관 시 <strong>68(또는 69)로 변경</strong></li>
-<li>NET으로 시작 = 경동 번호 아님</li>
-<li><strong>반드시 경동 송장으로 마켓에 변경 입력</strong> — 안 하면 장기 미배송 반품</li>
-<li><strong>수동(크무비)은 경동택배비를 상품가에 포함</strong>시켜서 올리세요</li>
+<li>경동택배 송장은 매일 <strong>오후 1~3시</strong>에 넥스트에서 확인 가능</li>
+<li>처음 한진 번호(51~) → 경동 이관 시 <strong>68(또는 69)로 변경</strong></li>
+<li><strong>반드시 경동 송장으로 마켓에 변경 입력</strong></li>
+<li>크무비는 <strong>경동택배비를 상품가에 포함</strong>시키세요</li>
 <li>착불 시 고객에게 <strong>사전 고지 필수</strong></li>
 </ul>
 </div>
 
 <div class="section" id="s12-3">
-<h3 class="section-title">12-3. 가송장 — 출고중지 방지</h3>
-<table>
-<thead><tr><th>규칙</th><th>설명</th></tr></thead>
-<tbody>
-<tr><td><strong>SLX 송장 주의</strong></td><td>SLX = 배대지 가송장 코드. 쿠팡에서 확인 가능 → 위험</td></tr>
-<tr><td><strong>CJ 송장 활용</strong></td><td>배대지 주문서 복사 → CJ 송장 생성 → 가송장으로 사용</td></tr>
-<tr><td><strong>쿠팡</strong></td><td>가송장 오래 방치 금지</td></tr>
-<tr><td><strong>스마트스토어</strong></td><td>가송장 아예 넣지 않음</td></tr>
-<tr><td><strong>절대 금지</strong></td><td>국내 송장 자주 바꾸기</td></tr>
-</tbody>
-</table>
-</div>
-
-<div class="section" id="s12-4">
-<h3 class="section-title">12-4. 돼지코 (변환 플러그)</h3>
+<h3 class="section-title">12-3. 돼지코 (변환 플러그)</h3>
 <p>중국과 한국은 같은 220V라도 <strong>콘센트 모양이 다릅니다.</strong> 전기 제품은 배대지에서 <strong>돼지코 동봉</strong> 선택. 220V 60Hz 맞는지 확인.</p>
 </div>
 </div>
 
-<!-- ===== CHAPTER 13 ===== -->
-<div class="chapter" id="ch13" data-keywords="보험,보상,일디랩,화물보험,배송비보험,파손,보험청구,보험접수">
+<!-- ===== CH13 ===== -->
+<div class="chapter" id="ch13" data-keywords="보험,보상,일디랩,화물보험,배송비보험,파손,보험청구">
 <h2 class="chapter-title">13. 보험 & 보상</h2>
 
 <div class="section" id="s13-1">
-<h3 class="section-title">13-1. 보험 종류 & 가입 기준</h3>
+<h3 class="section-title">13-1. 보험 종류</h3>
 <table>
 <thead><tr><th>보험</th><th>제공처</th><th>역할</th></tr></thead>
 <tbody>
@@ -1068,166 +1169,177 @@ https://unipass.customs.go.kr/csp/persIndex.do</code></pre>
 <tr><td><strong>배송비보험</strong></td><td>넥스트배송</td><td>배송 관련 비용 보상</td></tr>
 </tbody>
 </table>
-<p>가구/책상/엔진톱/기계류/유리 → <strong>보험 필수</strong>. 의류/직물 → 불필요.</p>
+<p>가구/기계류/유리 → <strong>보험 필수</strong>. 의류/직물 → 불필요.</p>
 </div>
 
 <div class="section" id="s13-2">
-<h3 class="section-title">13-2. 보험 청구 프로세스</h3>
+<h3 class="section-title">13-2. 보험 청구 절차</h3>
 <pre><code>[STEP 1] 파손 확인 즉시 사진/영상 촬영
     ↓
 [STEP 2] 넥스트배송 "보험접수" 클릭
     ↓
 [STEP 3] 출고 당시 사진 + 파손 부위 사진/영상 첨부
     ↓
-[STEP 4] 보상금 지급 (체감 2주~1달)</code></pre>
-<blockquote>
-<p>수령 후 영업일 <strong>3일 이내</strong> 접수 / 출고 후 <strong>90일 이내</strong> / 최대 보상 <strong>30만 원</strong></p>
-<p>결제 후 출고 = "실사 확인 동의"로 간주 → 보상 제외 가능</p>
-</blockquote>
+[STEP 4] 보상금 지급 (약 2주~1달 소요)</code></pre>
 </div>
 
 <div class="section" id="s13-3">
-<h3 class="section-title">13-3. 파손 시 전체 대응 플로우</h3>
-<pre><code>[파손 발견]
-    ↓
-[고객에게 배대지 실사사진 전송 → 괜찮은지 확인]
-    ↓ 괜찮다 → 출고
-    ↓ 안 괜찮다
-        ↓
-    [미미한 파손] → 고객과 협의 (할인/출고/반품)
-    [완전 파손] → 자체폐기 → 보험처리 → 다른 판매자에게 재주문</code></pre>
+<h3 class="section-title">13-3. 보상 관련 핵심 규칙</h3>
+<table>
+<thead><tr><th>항목</th><th>내용</th></tr></thead>
+<tbody>
+<tr><td><strong>접수 기한</strong></td><td>수령 후 영업일 <strong>3일 이내</strong></td></tr>
+<tr><td><strong>최대 기한</strong></td><td>출고 후 <strong>90일 이내</strong></td></tr>
+<tr><td><strong>최대 보상</strong></td><td><strong>30만 원</strong></td></tr>
+<tr><td><strong>결제 후 출고</strong></td><td>실사 확인 후 출고 동의로 간주 → 보상 제외 가능</td></tr>
+<tr><td><strong>국내 배송 중 파손</strong></td><td>배대지에 보험 신청 가능 + 국내 택배사 보상 동시 접수</td></tr>
+<tr><td><strong>보상 제외</strong></td><td>허위 신고, 언더밸류, 보상 목적 가격 조작</td></tr>
+</tbody>
+</table>
+</div>
+
+<div class="section" id="s13-4">
+<h3 class="section-title">13-4. 보상 접수 경로 4가지</h3>
+<table>
+<thead><tr><th>경로</th><th>대상</th></tr></thead>
+<tbody>
+<tr><td><strong>넥스트배송 화물보험</strong></td><td>배대지 내 파손/분실</td></tr>
+<tr><td><strong>넥스트배송 배송비보험</strong></td><td>배송비 관련 보상</td></tr>
+<tr><td><strong>통관사(선사/세관) 보상</strong></td><td>통관 과정 중 파손</td></tr>
+<tr><td><strong>국내 택배사 보상</strong></td><td>국내 배송 중 파손</td></tr>
+</tbody>
+</table>
 </div>
 </div>
 
-<!-- ===== CHAPTER 14 ===== -->
-<div class="chapter" id="ch14" data-keywords="재고,재고쌓기,접수대기,재고신청,보관료,수취인변경,프리스탁킹">
-<h2 class="chapter-title">14. 재고 쌓기 전략</h2>
+<!-- ===== CH-EXTRA: 결제 & 세금 ===== -->
+<div class="chapter" id="ch-pay" data-keywords="결제,예치금,카드,무통장,세금계산서,배송비결제">
+<h2 class="chapter-title">14. 배송비 결제 & 세금계산서</h2>
+
+<div class="section" id="s-pay-1">
+<h3 class="section-title">14-1. 결제 방식</h3>
+<table>
+<thead><tr><th>방식</th><th>설명</th></tr></thead>
+<tbody>
+<tr><td><strong>예치금 결제</strong></td><td>미리 충전 후 자동 차감 (가장 편리)</td></tr>
+<tr><td><strong>무통장 입금</strong></td><td>계좌이체</td></tr>
+<tr><td><strong>신용카드 결제</strong></td><td>카드 수수료 0%, 무이자 할부 가능</td></tr>
+</tbody>
+</table>
+<blockquote><p>입고완료 후 1~2일 내 미결제건이 생김. 알림톡으로 결제 알림이 오지만, 하루 한 번 직접 체크 권장.</p></blockquote>
+</div>
+
+<div class="section" id="s-pay-2">
+<h3 class="section-title">14-2. 세금계산서</h3>
+<ul>
+<li>자동 발행 or 요청 발행 선택 가능</li>
+<li>배송비 내역 <strong>엑셀 다운로드</strong> 가능</li>
+</ul>
+</div>
+</div>
+
+<!-- ===== CH15 ===== -->
+<div class="chapter" id="ch15" data-keywords="노데이터,오류입고,오배송,리턴,반품,구매대행수수료">
+<h2 class="chapter-title">15. 실전 문제 해결</h2>
+
+<div class="section" id="s15-0">
+<h3 class="section-title">주문서 전체 상태 흐름</h3>
+<pre><code>접수대기 → 접수신청 → 입고 → 검수/포장 → 출고검토 → 결제 → 출고 → 통관 → 배송완료
+
+[접수대기] 정상 입/출고 불가. 수정 가능
+[접수신청] 입고/검수/포장 정상 진행
+[오류입고] 정보 불일치/파손 시 — 절대 출고 불가
+[출고검토] 정밀검수 완료/포장확인/회신 필요
+[출고보류] 잠깐 보류 필요 시</code></pre>
+</div>
 
 <div class="section" id="s14-1">
-<h3 class="section-title">14-1. 재고 쌓기 프로세스</h3>
-<pre><code>[STEP 1] 타오바오 구매 → 배대지 주소로 발송
-    ↓
-[STEP 2] 넥스트에 주문서 작성 (수취인: 본인, 상태: "접수대기")
-    ↓
-[STEP 3] 입고 확인 & 보관
-    ↓
-[STEP 4] 고객 주문 들어오면
-    → 수취인 정보 변경
-    → "접수대기" → "접수신청"으로 변경
-    → 출고요청</code></pre>
+<h3 class="section-title">14-1. 노데이터</h3>
+<p>상품은 도착했는데 매칭되는 주문서가 없는 상태.</p>
+<p><strong>원인:</strong> 트래킹번호 미입력 / 번호 불일치 / 사서함 누락</p>
+<p><strong>해결:</strong> 주문서에 트래킹번호 정확히 입력. 30일 무료 보관, 60일 후 자동 폐기.</p>
 </div>
 
 <div class="section" id="s14-2">
-<h3 class="section-title">14-2. 보관 규칙</h3>
-<table>
-<thead><tr><th>구분</th><th>접수대기</th><th>재고신청</th></tr></thead>
-<tbody>
-<tr><td>검수</td><td>없음</td><td>간략 검수 포함</td></tr>
-<tr><td>보관료</td><td><strong>무료</strong></td><td>30일 무료, 이후 1일 1,000원</td></tr>
-<tr><td>출고</td><td>정상 출고 불가 (변경 필요)</td><td>정상 출고 가능</td></tr>
-<tr><td>최대 보관</td><td>30일 무료, 60일 후 <strong>자동 폐기</strong></td><td>최대 45일</td></tr>
-</tbody>
-</table>
-<blockquote><p><strong>실전 팁:</strong> 접수대기(무료)로 넣어두고, 주문 들어올 때 접수신청으로 바꾸는 게 비용 효율적. "잘 나가는 컬러만 5개씩 재고 쌓기"</p></blockquote>
-</div>
-</div>
-
-<!-- ===== CHAPTER 15 ===== -->
-<div class="chapter" id="ch15" data-keywords="노데이터,오류입고,배송지연,관부가세미납,오배송,리턴,반품,회수,양식">
-<h2 class="chapter-title">15. 실전 문제 해결 매뉴얼</h2>
-
-<div class="section" id="s15-1">
-<h3 class="section-title">15-1. 노데이터</h3>
-<p>상품은 도착했는데 매칭되는 주문서가 없는 상태. 원인: 트래킹번호 미입력 / 번호 불일치 / 사서함 누락.</p>
-<p>정상입고: 1~2일 출고 / <strong>노데이터: 며칠 이상 지연.</strong> 30일 무료, 60일 후 자동 폐기.</p>
-</div>
-
-<div class="section" id="s15-2">
-<h3 class="section-title">15-2. 오류입고 6가지 유형별 대응</h3>
+<h3 class="section-title">14-2. 오류입고 유형별 대응</h3>
 <table>
 <thead><tr><th>유형</th><th>대응</th></tr></thead>
 <tbody>
 <tr><td><strong>트래킹 불일치</strong></td><td>트래킹번호 확인 & 수정</td></tr>
 <tr><td><strong>수량 오류</strong></td><td>판매자에게 나머지 확인. 멀티트래킹 추가</td></tr>
-<tr><td><strong>부품 부족</strong></td><td>판매자에게 재발급 → 멀티트래킹 추가</td></tr>
-<tr><td><strong>파손</strong></td><td>실사 확인 → 고객 협의 → 보험/재주문</td></tr>
-<tr><td><strong>사이즈 확인 불가</strong></td><td>추가 검수 요청 or 출고 진행</td></tr>
-<tr><td><strong>수량 확인 불가</strong></td><td>정밀검수 요청</td></tr>
+<tr><td><strong>부품 부족</strong></td><td>판매자에게 재발급 요청</td></tr>
+<tr><td><strong>파손</strong></td><td>실사 확인 → 보험 접수 or 재주문</td></tr>
+<tr><td><strong>사이즈/수량 확인 불가</strong></td><td>정밀검수 요청</td></tr>
 </tbody>
 </table>
 </div>
 
 <div class="section" id="s15-3">
-<h3 class="section-title">15-3. 고객 대응 문구 모음</h3>
-<h4>배송지연 안내</h4>
-<pre><code>현재 해외에서 통관 중입니다.
-세관 물량에 따라 3~7일 소요되며,
-통관 완료 후 1~2일 내 국내 택배배송이 완료됩니다.</code></pre>
-<h4>관부가세 안내</h4>
-<pre><code>[고객명] 고객님! 세관에서 연락이 오셨을 겁니다.
-관부가세 납부하셔야 배송 진행됩니다!</code></pre>
-<h4>개인통관고유번호 안내</h4>
-<pre><code>구매하신 제품은 해외배송 상품으로 개인통관고유번호가 필요합니다.
-아래 링크에서 조회 후 P로 시작하는 통관번호 회신 부탁드립니다.
-https://unipass.customs.go.kr/csp/persIndex.do</code></pre>
+<h3 class="section-title">15-3. 리턴 (중국 내 반품)</h3>
+<p>고객 취소, 오배송, 파손 시 중국 내 반품 처리.</p>
+<ul>
+<li>모든 리턴비용은 <strong>선불 원칙</strong></li>
+<li>착불 발송 시 반드시 <strong>사전 협의</strong></li>
+<li>픽업비용 미결제 시 자동 반송 가능</li>
+</ul>
 </div>
 
 <div class="section" id="s15-4">
-<h3 class="section-title">15-4. 양식 모음</h3>
-<h4>경동택배 재회수 요청</h4>
-<pre><code>- 넥스트배송 주문번호 :
-- 통관 운송장 번호 : ( 예 : NET********* )
-- 경동택배 운송장번호 :
-- 주소 : ( 새로 받을 곳의 주소 )
-- 우편번호 :
-- 이름 :
-- 연락처 :
-- 사유 : 이사 / 출장 / 판매처 회수 후 폐기 등</code></pre>
-<h4>수취인변경 요청</h4>
-<pre><code>[주문번호] [상품명] 재고 주문서 수취인변경요청 --> [고객 이름]
-[통관번호]
-[연락처]
-[주소]
-수정 후 출고 부탁드립니다!</code></pre>
-<h4>경동택배 인수처리</h4>
-<pre><code>- 주문번호 :
-- 운송장번호 :
-- 화주 수령여부 : 수령, 미수령, 확인불가
-- 국내 착불비 입금 여부 : 입금, 미입금, 확인불가</code></pre>
+<h3 class="section-title">15-4. 구매대행 수수료 (배대지에 구매 의뢰 시)</h3>
+<table>
+<thead><tr><th>항목</th><th>내용</th></tr></thead>
+<tbody>
+<tr><td><strong>수수료</strong></td><td><strong>5%</strong> (품목별 최저 기본 수수료 2,000원/건)</td></tr>
+<tr><td><strong>추가 협의 시</strong></td><td>최소 수수료 3,000원/건</td></tr>
+<tr><td><strong>가능 사이트</strong></td><td>taobao.com, 1688.com만 가능</td></tr>
+</tbody>
+</table>
+</div>
+
+<div class="section" id="s15-5">
+<h3 class="section-title">15-5. 오배송</h3>
+<table>
+<thead><tr><th>케이스</th><th>원인</th><th>해결</th></tr></thead>
+<tbody>
+<tr><td>주소 맞음 + 택배기사 오배송</td><td>기사 실수</td><td>배대지에서 회수 가능 (시간 소요)</td></tr>
+<tr><td>주소 잘못 입력</td><td>내 실수</td><td>해결 거의 불가. 판매자에게 재배송 요청만</td></tr>
+</tbody>
+</table>
+<blockquote><p>주문서 주소 <strong>반드시 더블체크</strong>하세요.</p></blockquote>
+</div>
+
+<div class="section" id="s15-6">
+<h3 class="section-title">15-6. 통관 중 주소변경</h3>
+<p>통관 중 주소변경은 <strong>매우 어렵습니다.</strong> 세관에 전달은 가능하지만 보장 불가. 반드시 <strong>출고 전에</strong> 변경하세요.</p>
+</div>
+
+<div class="section" id="s15-7">
+<h3 class="section-title">15-7. 관부가세 미납 시</h3>
+<p>관부가세 대기 상태로 세관에 오래 묶이면 <strong>자체 폐기</strong>될 수 있습니다. 고객에게 빠른 납부 안내가 필요합니다.</p>
 </div>
 </div>
 
-<!-- ===== CHAPTER 16 ===== -->
-<div class="chapter" id="ch16" data-keywords="꿀팁,실전팁,주의사항,역마진,리뷰용지,보험,재고,배터리,돼지코">
-<h2 class="chapter-title">16. 김탄생의 실전 꿀팁 20선</h2>
+<!-- ===== CH15 ===== -->
+<div class="chapter" id="ch15" data-keywords="꿀팁,실전팁,주의사항">
+<h2 class="chapter-title">16. 김탄생의 핵심 꿀팁</h2>
 
-<div class="section" id="s16-tips">
-<h3 class="section-title">수천 건의 실전에서 쌓은 핵심 노하우</h3>
+<div class="section" id="s15-tips">
+<h3 class="section-title">실전에서 꼭 알아야 할 것들</h3>
 
-<p><strong>1. 주문서 복사 시 주소 변경 반드시 확인</strong> — 이전 고객 주소 남아서 엉뚱한 곳 배송 사고 실제 발생.</p>
-<p><strong>2. 접수대기는 재고 쌓을 때만</strong> — 수정 시 물류 메시지 지우고 접수신청으로.</p>
-<p><strong>3. 정밀검수 결제는 수동으로</strong> — "결제대기"에 쌓여 있으면 직접 하나하나 결제.</p>
-<p><strong>4. 경동 송장은 오후 1~3시에 확인</strong> — 확인 후 바로 마켓에 입력.</p>
-<p><strong>5. SLX 송장 = 물건 안 보낸 것</strong> — 보험 신청 불필요.</p>
-<p><strong>6. 올댓은 가격취하에 잘 걸림</strong> — 고가 상품은 넥스트로.</p>
-<p><strong>7. 해운은 고객에게 말하면 안 됨</strong> — "중국 현지 내 배송 중"으로 안내.</p>
-<p><strong>8. 소포 분리 배송 미리 고지</strong> — "2박스로 도착합니다" 사전 안내.</p>
-<p><strong>9. 리뷰용지(QR) 변경은 매번 전달</strong> — 말 없이 주문서 작성하면 기존 용지로 나감.</p>
-<p><strong>10. 경동택배비는 상품가에 포함</strong> — 별도 청구하면 CS 발생.</p>
-<p><strong>11. 타오바오 주문번호도 기입</strong> — 넥스트 트래킹 확인 원활.</p>
-<p><strong>12. 실사보기로 입고 상태 확인</strong> — 파손/스크래치 확인 후 출고.</p>
-<p><strong>13. 통관 중 주소변경 거의 불가능</strong> — 통관 전에 변경하세요.</p>
-<p><strong>14. 예치금 자동결제 활용</strong> — 매번 수동 결제 = 시간 낭비.</p>
-<p><strong>15. 경동비 선결제 미선택 = 자동 착불</strong> — 사전 고지 안 하면 CS.</p>
-<p><strong>16. 잘 나가는 상품은 컬러별 재고</strong> — 리드타임 단축 + 매출 증가.</p>
-<p><strong>17. 배터리 포함 = 해운만 가능</strong> — 항공 불가.</p>
-<p><strong>18. 역마진 발생 시 즉시 가격 인상</strong> — "배송비 상승으로 추가 입금 필요" 안내.</p>
-<p><strong>19. 경동택배 인수확인 매일 오후 5시까지</strong> — 영업소 전화로 독촉.</p>
-<p><strong>20. 배대지는 첫 번째 사업 파트너</strong> — 소통이 되는 곳, 문제 해결을 함께 해주는 곳.</p>
+<p><strong>1. 주문서 복사 시 주소 변경 반드시 확인</strong> — 이전 고객 주소가 남아서 오배송 사고 발생.</p>
+<p><strong>2. 정밀검수 결제는 수동으로</strong> — "결제대기"에 쌓이면 직접 하나하나 결제해야 합니다.</p>
+<p><strong>3. 경동 송장은 오후 1~3시에 확인</strong> — 확인 후 바로 마켓에 입력.</p>
+<p><strong>4. 소포 분리 배송 미리 고지</strong> — 대형 상품은 2박스로 나뉘어 배송될 수 있음.</p>
+<p><strong>5. 경동택배비는 상품가에 포함</strong> — 크무비는 경동비까지 합산해서 판매가 설정.</p>
+<p><strong>6. 타오바오 주문번호도 주문서에 기입</strong> — 트래킹 확인이 원활해집니다.</p>
+<p><strong>7. 실사보기로 입고 상태 확인</strong> — 파손/스크래치 확인 후 출고.</p>
+<p><strong>8. 통관 중 주소변경 거의 불가능</strong> — 통관 전에 변경하세요.</p>
+<p><strong>9. 예치금 자동결제 활용</strong> — 매번 수동 결제 = 시간 낭비.</p>
+<p><strong>10. 배대지는 첫 번째 사업 파트너</strong> — 소통이 되는 곳, 문제를 함께 해결해주는 곳이 좋은 배대지입니다.</p>
 </div>
 </div>
 
-<!-- ===== QUICK REFERENCE ===== -->
+<!-- ===== QUICK REF ===== -->
 <div class="chapter" id="ch-ref" data-keywords="핵심숫자,참조,요약">
 <h2 class="chapter-title">빠른 참조: 핵심 숫자</h2>
 <div class="section" id="s-ref">
@@ -1239,262 +1351,104 @@ https://unipass.customs.go.kr/csp/persIndex.do</code></pre>
 <tr><td>경동 분류</td><td>세변의 합 <strong>150cm+</strong> or 한 변 <strong>1m+</strong></td></tr>
 <tr><td>합배송 무료</td><td>트래킹번호 <strong>3개까지</strong></td></tr>
 <tr><td>멀티박스 추가</td><td><strong>3,000원</strong>/박스</td></tr>
-<tr><td>보관 무료</td><td><strong>30일</strong> (초과 시 1일 1,000원)</td></tr>
-<tr><td>자동 폐기</td><td><strong>60일</strong></td></tr>
 <tr><td>보험 청구 기한</td><td>수령 후 <strong>3일 이내</strong>, 출고 후 <strong>90일 이내</strong></td></tr>
 <tr><td>정밀검수 비용</td><td>약 <strong>4,000~7,000원</strong></td></tr>
-<tr><td>구매대행 수수료</td><td><strong>5%</strong> (최저 2,000원/건)</td></tr>
 <tr><td>도서산간 추가</td><td>CJ/한진 <strong>6,000원</strong></td></tr>
+<tr><td>구매대행 수수료</td><td><strong>5%</strong> (최저 2,000원/건)</td></tr>
 <tr><td>LCL 운임</td><td><strong>1CBM = 44달러</strong></td></tr>
 <tr><td>경동 송장 확인</td><td>매일 <strong>오후 1~3시</strong></td></tr>
+<tr><td>취하건 통관수수료</td><td><strong>5,000원</strong></td></tr>
+<tr><td>간이통관 수수료</td><td><strong>3,300원</strong></td></tr>
+<tr><td>배대지 근무시간</td><td><strong>08:00~17:00</strong> (중국 시간)</td></tr>
 </tbody>
 </table>
 </div>
 </div>
 
-<hr>
-<p style="text-align:center; color:#999; font-size:13px; margin-top:40px;">
-<strong>이 가이드는 김탄생의 실전 경험을 기반으로 작성되었습니다.</strong><br>
-카페: 탄생하는부자들 (cafe.naver.com/rebirthpeople)<br>
-마지막 업데이트: 2026년 4월
-</p>
+<div class="footer-brand">
+  <div class="logo">김탄생의 배대지 완전정복</div>
+  <div class="tagline">탄생하는부자들 | 구매대행의 모든 것</div>
+  <div class="cafe">cafe.naver.com/rebirthpeople</div>
+</div>
 
 </main>
 
 <button id="back-to-top" onclick="window.scrollTo({top:0,behavior:'smooth'})">&#8593;</button>
 
 <script>
-// ===== TOC Generation =====
 function buildTOC() {
   const toc = document.getElementById('toc');
   const chapters = document.querySelectorAll('.chapter');
   let html = '';
-
   chapters.forEach(ch => {
     const title = ch.querySelector('.chapter-title');
     if (!title) return;
-    const id = ch.id;
-    html += `<a class="toc-chapter" data-target="${id}" onclick="scrollToSection('${id}')">${title.textContent}</a>`;
-
-    const sections = ch.querySelectorAll('.section-title');
-    sections.forEach(sec => {
+    html += `<a class="toc-chapter" data-target="${ch.id}" onclick="scrollToSection('${ch.id}')">${title.textContent}</a>`;
+    ch.querySelectorAll('.section-title').forEach(sec => {
       const secId = sec.parentElement.id;
-      if (secId) {
-        html += `<a class="toc-section" data-target="${secId}" onclick="scrollToSection('${secId}')">${sec.textContent}</a>`;
-      }
+      if (secId) html += `<a class="toc-section" data-target="${secId}" onclick="scrollToSection('${secId}')">${sec.textContent}</a>`;
     });
   });
-
   toc.innerHTML = html;
 }
 
-// ===== Index Tags =====
 function buildIndex() {
   const indexTags = document.getElementById('index-tags');
   const keywords = new Set();
-  const keywordMap = {};
-
   document.querySelectorAll('.chapter[data-keywords]').forEach(ch => {
-    const kws = ch.dataset.keywords.split(',');
-    kws.forEach(kw => {
-      kw = kw.trim();
-      if (kw) {
-        keywords.add(kw);
-        if (!keywordMap[kw]) keywordMap[kw] = [];
-        keywordMap[kw].push(ch.id);
-      }
-    });
+    ch.dataset.keywords.split(',').forEach(kw => { kw = kw.trim(); if (kw) keywords.add(kw); });
   });
-
   const sorted = Array.from(keywords).sort((a, b) => a.localeCompare(b, 'ko'));
-  let html = '';
-  sorted.forEach(kw => {
-    html += `<span class="index-tag" onclick="searchFromIndex('${kw}')">${kw}</span>`;
-  });
-  indexTags.innerHTML = html;
+  indexTags.innerHTML = sorted.map(kw => `<span class="index-tag" onclick="searchFromIndex('${kw}')">${kw}</span>`).join('');
 }
 
-// ===== Scroll =====
 function scrollToSection(id) {
   const el = document.getElementById(id);
-  if (el) {
-    el.scrollIntoView({ behavior: 'smooth', block: 'start' });
-    if (window.innerWidth <= 768) {
-      document.getElementById('sidebar').classList.remove('open');
-    }
-  }
+  if (el) { el.scrollIntoView({ behavior: 'smooth', block: 'start' }); if (window.innerWidth <= 768) document.getElementById('sidebar').classList.remove('open'); }
 }
 
-// ===== Active TOC tracking =====
 function updateActiveTOC() {
   const chapters = document.querySelectorAll('.chapter');
   const tocLinks = document.querySelectorAll('.toc-chapter');
   let currentId = '';
-
-  chapters.forEach(ch => {
-    const rect = ch.getBoundingClientRect();
-    if (rect.top <= 100) {
-      currentId = ch.id;
-    }
-  });
-
-  tocLinks.forEach(link => {
-    link.classList.toggle('active', link.dataset.target === currentId);
-  });
+  chapters.forEach(ch => { if (ch.getBoundingClientRect().top <= 100) currentId = ch.id; });
+  tocLinks.forEach(link => link.classList.toggle('active', link.dataset.target === currentId));
 }
 
-// ===== Search =====
 let searchTimeout;
-
-function handleSearch(query) {
-  clearTimeout(searchTimeout);
-  searchTimeout = setTimeout(() => performSearch(query), 200);
-}
+function handleSearch(query) { clearTimeout(searchTimeout); searchTimeout = setTimeout(() => performSearch(query), 200); }
 
 function performSearch(query) {
   const resultsEl = document.getElementById('search-results');
   const chapters = document.querySelectorAll('.chapter');
   const sections = document.querySelectorAll('.section');
-
-  // Clear previous highlights
-  document.querySelectorAll('mark.search-highlight').forEach(m => {
-    const parent = m.parentNode;
-    parent.replaceChild(document.createTextNode(m.textContent), m);
-    parent.normalize();
-  });
-
-  if (!query || query.length < 1) {
-    chapters.forEach(ch => ch.classList.remove('search-hidden'));
-    sections.forEach(s => s.classList.remove('search-hidden'));
-    resultsEl.style.display = 'none';
-    return;
-  }
-
-  const q = query.toLowerCase();
-  let matchCount = 0;
-  const matchedChapters = new Set();
-
-  // Search in sections
-  sections.forEach(sec => {
-    const text = sec.textContent.toLowerCase();
-    if (text.includes(q)) {
-      sec.classList.remove('search-hidden');
-      matchedChapters.add(sec.closest('.chapter'));
-      matchCount++;
-      highlightText(sec, query);
-    } else {
-      sec.classList.add('search-hidden');
-    }
-  });
-
-  // Show/hide chapters
-  chapters.forEach(ch => {
-    if (matchedChapters.has(ch)) {
-      ch.classList.remove('search-hidden');
-    } else {
-      // Check chapter title and keywords
-      const title = ch.querySelector('.chapter-title');
-      const keywords = ch.dataset.keywords || '';
-      if ((title && title.textContent.toLowerCase().includes(q)) || keywords.toLowerCase().includes(q)) {
-        ch.classList.remove('search-hidden');
-        ch.querySelectorAll('.section').forEach(s => s.classList.remove('search-hidden'));
-        matchCount++;
-      } else {
-        ch.classList.add('search-hidden');
-      }
-    }
-  });
-
-  resultsEl.style.display = 'block';
-  resultsEl.textContent = matchCount > 0 ? `${matchCount}개 항목 발견` : '검색 결과 없음';
+  document.querySelectorAll('mark.search-highlight').forEach(m => { const p = m.parentNode; p.replaceChild(document.createTextNode(m.textContent), m); p.normalize(); });
+  if (!query || query.length < 1) { chapters.forEach(ch => ch.classList.remove('search-hidden')); sections.forEach(s => s.classList.remove('search-hidden')); resultsEl.style.display = 'none'; return; }
+  const q = query.toLowerCase(); let matchCount = 0; const matchedChapters = new Set();
+  sections.forEach(sec => { if (sec.textContent.toLowerCase().includes(q)) { sec.classList.remove('search-hidden'); matchedChapters.add(sec.closest('.chapter')); matchCount++; highlightText(sec, query); } else { sec.classList.add('search-hidden'); } });
+  chapters.forEach(ch => { if (matchedChapters.has(ch)) { ch.classList.remove('search-hidden'); } else { const t = ch.querySelector('.chapter-title'); const kw = ch.dataset.keywords || ''; if ((t && t.textContent.toLowerCase().includes(q)) || kw.toLowerCase().includes(q)) { ch.classList.remove('search-hidden'); ch.querySelectorAll('.section').forEach(s => s.classList.remove('search-hidden')); matchCount++; } else { ch.classList.add('search-hidden'); } } });
+  resultsEl.style.display = 'block'; resultsEl.textContent = matchCount > 0 ? `${matchCount}개 항목 발견` : '검색 결과 없음';
 }
 
 function highlightText(container, query) {
-  const walker = document.createTreeWalker(container, NodeFilter.SHOW_TEXT, null, false);
-  const textNodes = [];
-
-  while (walker.nextNode()) {
-    textNodes.push(walker.currentNode);
-  }
-
-  textNodes.forEach(node => {
-    const text = node.textContent;
-    const lowerText = text.toLowerCase();
-    const lowerQuery = query.toLowerCase();
-    const idx = lowerText.indexOf(lowerQuery);
-
-    if (idx !== -1 && node.parentNode.tagName !== 'SCRIPT' && node.parentNode.tagName !== 'STYLE' && !node.parentNode.classList?.contains('search-highlight')) {
-      const before = text.substring(0, idx);
-      const match = text.substring(idx, idx + query.length);
-      const after = text.substring(idx + query.length);
-
-      const fragment = document.createDocumentFragment();
-      if (before) fragment.appendChild(document.createTextNode(before));
-
-      const mark = document.createElement('mark');
-      mark.className = 'search-highlight';
-      mark.textContent = match;
-      fragment.appendChild(mark);
-
-      if (after) fragment.appendChild(document.createTextNode(after));
-
-      node.parentNode.replaceChild(fragment, node);
+  const walker = document.createTreeWalker(container, NodeFilter.SHOW_TEXT, null, false); const nodes = [];
+  while (walker.nextNode()) nodes.push(walker.currentNode);
+  nodes.forEach(node => { const text = node.textContent; const idx = text.toLowerCase().indexOf(query.toLowerCase());
+    if (idx !== -1 && node.parentNode.tagName !== 'SCRIPT' && !node.parentNode.classList?.contains('search-highlight')) {
+      const frag = document.createDocumentFragment(); if (idx > 0) frag.appendChild(document.createTextNode(text.substring(0, idx)));
+      const mark = document.createElement('mark'); mark.className = 'search-highlight'; mark.textContent = text.substring(idx, idx + query.length); frag.appendChild(mark);
+      if (idx + query.length < text.length) frag.appendChild(document.createTextNode(text.substring(idx + query.length)));
+      node.parentNode.replaceChild(frag, node);
     }
   });
 }
 
-function searchFromIndex(keyword) {
-  const input = document.getElementById('search-input');
-  input.value = keyword;
-  performSearch(keyword);
+function searchFromIndex(kw) { document.getElementById('search-input').value = kw; performSearch(kw); const f = document.querySelector('.chapter:not(.search-hidden)'); if (f) setTimeout(() => f.scrollIntoView({ behavior: 'smooth', block: 'start' }), 100); }
+function toggleSidebar() { document.getElementById('sidebar').classList.toggle('open'); }
 
-  // Scroll to first visible section
-  const firstVisible = document.querySelector('.chapter:not(.search-hidden)');
-  if (firstVisible) {
-    setTimeout(() => {
-      firstVisible.scrollIntoView({ behavior: 'smooth', block: 'start' });
-    }, 100);
-  }
-}
-
-// ===== Back to Top =====
-function updateBackToTop() {
-  const btn = document.getElementById('back-to-top');
-  btn.classList.toggle('visible', window.scrollY > 400);
-}
-
-// ===== Mobile Toggle =====
-function toggleSidebar() {
-  document.getElementById('sidebar').classList.toggle('open');
-}
-
-// ===== Init =====
-document.addEventListener('DOMContentLoaded', () => {
-  buildTOC();
-  buildIndex();
-});
-
-window.addEventListener('scroll', () => {
-  updateActiveTOC();
-  updateBackToTop();
-});
-
-// Keyboard shortcut: Ctrl+K for search
-document.addEventListener('keydown', e => {
-  if ((e.ctrlKey || e.metaKey) && e.key === 'k') {
-    e.preventDefault();
-    document.getElementById('search-input').focus();
-  }
-  if (e.key === 'Escape') {
-    const input = document.getElementById('search-input');
-    if (document.activeElement === input) {
-      input.value = '';
-      performSearch('');
-      input.blur();
-    }
-  }
-});
+document.addEventListener('DOMContentLoaded', () => { buildTOC(); buildIndex(); });
+window.addEventListener('scroll', () => { updateActiveTOC(); document.getElementById('back-to-top').classList.toggle('visible', window.scrollY > 400); });
+document.addEventListener('keydown', e => { if ((e.ctrlKey || e.metaKey) && e.key === 'k') { e.preventDefault(); document.getElementById('search-input').focus(); } if (e.key === 'Escape') { const i = document.getElementById('search-input'); if (document.activeElement === i) { i.value = ''; performSearch(''); i.blur(); } } });
 </script>
-
 </body>
 </html>
